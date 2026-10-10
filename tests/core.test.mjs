@@ -4,6 +4,7 @@ import {parseNumbers,summarize} from '../src/stats.js';
 import {packZip,unpackZip,createBackup,inspectBackup,crc32} from '../src/backup.js';
 import {lessons,matchMentorTopic} from '../src/content.js';
 import {execFileSync} from 'node:child_process';
+import {readFile} from 'node:fs/promises';
 
 test('descriptive statistics are correct for known fixture',()=>{
  const x=summarize([2,4,4,4,5,5,7,9]);
