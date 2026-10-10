@@ -1,4 +1,4 @@
-# Research Hub AI — First Working Release (v0.1.0)
+# Research Hub AI — Web-ready prototype (v0.1.1)
 
 **Free. Offline-first. Private by default. No paid APIs or mandatory accounts.**
 
@@ -16,6 +16,16 @@ This is a working prototype of the Research Hub AI master blueprint. It is delib
 - Project writing drafts and TXT export.
 - Portable `.zip` backup with `manifest.json` (SHA-256) and `data.json`, and validated, atomic restore (backup format v1).
 - Offline cached app after successful first online load; installable web app on supporting browsers.
+
+## Public website (GitHub Pages)
+
+After a maintainer enables **Settings → Pages → Build and deployment → Source: GitHub Actions**, every successful push to `main` tests the web app and deploys only the public static assets.
+
+**Planned site:** https://sheltshen13.github.io/Research-Hub-AI/
+
+Site publication is separate from repository upload: check **Actions → Publish free website** before claiming the website is live. No paid hosting or backend is required for the static application.
+
+**Important:** Work saved on `127.0.0.1` and work saved on the GitHub Pages website are in different browser storage origins. They will **not** synchronise automatically. Export a ZIP backup on the old site and restore it on the new site if you wish to migrate your projects. Browser storage can be deleted or evicted; keep copies of exported backups in a safe place. Never store identifiable participant data on this prototype.
 
 ## Install and run on Android (Termux)
 
