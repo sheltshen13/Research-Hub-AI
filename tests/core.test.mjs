@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {parseNumbers,summarize} from '../src/stats.js';
 import {packZip,unpackZip,createBackup,inspectBackup,crc32} from '../src/backup.js';
 import {lessons,matchMentorTopic} from '../src/content.js';
+import {execFileSync} from 'node:child_process';
 
 test('descriptive statistics are correct for known fixture',()=>{
  const x=summarize([2,4,4,4,5,5,7,9]);
@@ -59,4 +60,10 @@ test('new Academy UI does not claim quiz success means mastery',async()=>{
  assert.ok(!app.includes("tag('Mastered')"));
  assert.ok(app.includes("data-field=\"practice\""));
  assert.ok(app.includes("data-field=\"reflection\""));
+});
+
+test('all browser JavaScript modules parse successfully',()=>{
+ for(const path of ['src/app.js','src/content.js','src/data.js','src/backup.js','src/stats.js']){
+  assert.doesNotThrow(()=>execFileSync(process.execPath,['--check',new URL('../'+path,import.meta.url).pathname]));
+ }
 });
