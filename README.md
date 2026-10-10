@@ -1,4 +1,4 @@
-# Research Hub AI — Web-ready prototype (v0.1.1)
+# Research Hub AI — Web-ready prototype (v0.1.2)
 
 **Free. Offline-first. Private by default. No paid APIs or mandatory accounts.**
 
@@ -7,13 +7,14 @@ This is a working prototype of the Research Hub AI master blueprint. It is delib
 ## What works
 
 - Local learning profile with five experience levels.
-- Academy: six fully authored Research Fundamentals lessons, each with a glossary, exercise and quiz; an evidence-based Skills Passport.
+- Academy: six Research Fundamentals lessons with quizzes, guided writing, and a quiz-based Skills Passport; lesson 1 is expanded into a detailed beginner walkthrough, worked case, self-reflection and five-question application check. A quiz pass does not certify mastery.
 - Three mentoring modes (Teach Me, Guide Me, Assist Me) with offline rules and transparent limits; **not an AI language model**.
 - Create, edit, archive, restore, delete and navigate research projects through eight conceptual stages.
 - Local autosave of drafts and project fields; save status.
 - Manually enter and manage unverified sources.
 - Basic Research Lab: count, mean, median, min/max and sample standard deviation using practice numbers.
 - Project writing drafts and TXT export.
+- Locally saved lesson practice and reflection notes, included in backups. Previous quiz attempts are preserved even when the lesson changes.
 - Portable `.zip` backup with `manifest.json` (SHA-256) and `data.json`, and validated, atomic restore (backup format v1).
 - Offline cached app after successful first online load; installable web app on supporting browsers.
 

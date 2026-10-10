@@ -54,7 +54,7 @@ export async function createBackup(records){
   const manifest={format:'research-hub-ai-backup',schemaVersion:1,dataFile:'data.json',sha256:await sha256(body),recordCount:records.length,exportedAt:data.exportedAt,encrypted:false};
   return packZip({'manifest.json':JSON.stringify(manifest,null,2),'data.json':body});
 }
-const allowedTypes=new Set(['profile','project','attempt','reference','settings']);
+const allowedTypes=new Set(['profile','project','attempt','reference','settings','lesson-note']);
 export async function inspectBackup(bytes){
   const files=unpackZip(bytes);
   if(Object.keys(files).length!==2||!files['manifest.json']||!files['data.json'])throw new Error('This is not a Research Hub AI backup.');
@@ -70,6 +70,7 @@ export async function inspectBackup(bytes){
     ids.add(r.id);
     if(r.type==='project'&&(typeof r.title!=='string'||r.title.length>140))throw new Error('Backup contains a malformed project.');
     if(r.type==='attempt'&&(!Array.isArray(r.answers)||typeof r.lessonId!=='string'))throw new Error('Backup contains malformed lesson results.');
+    if(r.type==='lesson-note'&&(typeof r.lessonId!=='string'||r.lessonId.length>60||typeof r.practice!=='string'||r.practice.length>8000||typeof r.reflection!=='string'||r.reflection.length>8000))throw new Error('Backup contains malformed lesson notes.');
   }
   return {records:body.records,exportedAt:body.exportedAt,count:body.records.length,projectCount:body.records.filter(x=>x.type==='project').length};
 }
