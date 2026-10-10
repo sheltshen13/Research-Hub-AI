@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.2 — Learn for understanding
+
+- Expanded Lesson 1 into six explained research stages, worked case, comparisons, examples and five applied quiz questions.
+- Added autosaved practice and reflection writing fields, plus a self-reported confidence selector to each lesson.
+- Changed misleading "Mastered" badges to "Quiz passed"; correct multiple-choice answers do not prove competence.
+- Preserved previous two-question quiz attempts and labelled them as previous checks when viewing expanded Lesson 1.
+- Included lesson notes in validated ZIP backup/restore; refreshed offline app cache.
+
+
 ## 0.1.1 — Web hosting and offline scope fix
 
 - Use relative asset URLs so the same website works from Termux and GitHub Pages project subpaths.
