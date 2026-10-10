@@ -7,3 +7,21 @@
 
 .hero .btn.ghost{color:#f0faf4;border-color:#73a390;background:#ffffff0b}.hero .btn.ghost:hover{background:#ffffff19}
 @media(max-width:680px){.stage-row .btn{grid-column:2;justify-self:start}}
+
+/* Four-stage Academy practice: compact, keyboard-accessible, phone first. */
+.guided-module{margin-top:22px;border:1px solid var(--line);border-radius:14px;padding:15px;background:#f9fbf9;min-width:0}
+.guided-module>p{margin-top:10px}
+.guided-progress{font-size:.85rem;font-weight:750;color:var(--green);border-bottom:1px solid var(--line);padding:10px 0}
+.guided-step{padding-top:18px;scroll-margin-top:92px}
+.guided-step>p{margin-top:10px}
+.guided-example{border-left:3px solid #6ca58d;background:#edf4ef;padding:12px 14px;border-radius:6px;margin:14px 0;color:#294c3f;font-size:.86rem;line-height:1.55}
+.guided-label{font-size:.86rem;font-weight:750;display:block;margin:12px 0 8px}
+.guided-check{border:1px solid var(--line);border-radius:12px;padding:12px;margin:15px 0;background:white;min-width:0}
+.guided-check legend{padding:0 6px;font-size:.86rem}
+.guided-check p{font-size:.85rem;margin:8px 0}
+.guided-feedback{margin-top:14px;padding:12px;background:#edf4ef;border-radius:10px;color:var(--ink);font-size:.84rem;line-height:1.6}
+.guided-controls{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:18px}
+.guided-recap{background:white;padding:14px;border:1px solid var(--line);border-radius:12px;margin-top:14px;scroll-margin-top:90px}
+.guided-summary-list dt{font-weight:750;margin-top:15px;font-size:.84rem}
+.guided-summary-list dd{white-space:pre-wrap;overflow-wrap:anywhere;margin:5px 0 12px;line-height:1.55;font-size:.86rem;color:var(--muted)}
+@media(max-width:390px){.guided-module{padding:11px}.guided-controls .btn{width:100%}}
