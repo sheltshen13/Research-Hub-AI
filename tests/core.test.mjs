@@ -36,7 +36,11 @@ test('backup roundtrip validates integrity and expected project count',async()=>
  const records=[{id:'profile',type:'profile',name:'Researcher'},{id:'proj-1',type:'project',title:'Test project',stage:1},{id:'a-1',type:'attempt',lessonId:'rf1',score:2,answers:[1,0]}];
  const zip=await createBackup(records);const result=await inspectBackup(zip);
  assert.deepEqual(result.records,records);assert.equal(result.projectCount,1);
- const modified=zip.slice();const start=modified.indexOf(0x64);modified[start]^=1;await assert.rejects(()=>inspectBackup(modified));
+ const modified=zip.slice();const marker=new TextEncoder().encode('research-hub-ai-backup');
+ const start=modified.findIndex((_,i)=>marker.every((byte,j)=>modified[i+j]===byte));
+ assert.ok(start>=0,'Expected a known marker in the ZIP payload');
+ modified[start]^=1;
+ await assert.rejects(()=>inspectBackup(modified),/checksum|integrity|damaged|unreadable|backup/i);
 });
 test('backup rejects unrecognized schema and duplicate ids safely',async()=>{
  const bad=[{id:'p',type:'project',title:'ok'},{id:'p',type:'project',title:'dup'}];
