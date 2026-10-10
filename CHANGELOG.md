@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.1 — Web hosting and offline scope fix
+
+- Use relative asset URLs so the same website works from Termux and GitHub Pages project subpaths.
+- Update the PWA manifest, service worker registration, precache URLs and offline fallback to respect deployment scope.
+- Add a free GitHub Pages deployment workflow that tests and publishes only public site assets.
+- Modernise CI actions and extend regression tests for scoped deployments.
+
+
 ## 0.1.0 — First working foundation
 
 - Responsive standalone research web application, no required accounts or subscriptions.
