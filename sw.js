@@ -1,7 +1,7 @@
-const CACHE='research-hub-ai-0.1.0-core';
-const APP=['/','/index.html','/styles.css','/src/app.js','/src/data.js','/src/content.js','/src/stats.js','/src/backup.js','/manifest.webmanifest','/icons/icon.svg','/icons/icon-192.png','/icons/icon-512.png'];
+const CACHE='research-hub-ai-0.1.1-core';
+const APP=['./','index.html','styles.css','src/app.js','src/data.js','src/content.js','src/stats.js','src/backup.js','manifest.webmanifest','icons/icon.svg','icons/icon-192.png','icons/icon-512.png'];
 self.addEventListener('install',event=>{
-  event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(APP)).then(()=>self.skipWaiting()));
+  event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(APP.map(path=>new URL(path,self.registration.scope).href))).then(()=>self.skipWaiting()));
 });
 self.addEventListener('activate',event=>{
   event.waitUntil((async()=>{
@@ -16,6 +16,6 @@ self.addEventListener('fetch',event=>{
     const match=await cache.match(event.request,{ignoreSearch:true});
     if(match) return match;
     try { return await fetch(event.request); }
-    catch { if(event.request.mode==='navigate')return await cache.match('/index.html'); throw new Error('Offline and not cached'); }
+    catch { if(event.request.mode==='navigate')return await cache.match(new URL('index.html',self.registration.scope).href); throw new Error('Offline and not cached'); }
   })());
 });
