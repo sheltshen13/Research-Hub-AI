@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.3 — Four research concepts, step by step
+
+- Added a beginner-friendly four-stage guided exercise on Observation, Question, Evidence and Limitation, with explanations, AI-learning examples and one knowledge check per concept.
+- Added separate autosaved answers and a read-only recap of the learner's own writing; original practice notes remain untouched.
+- Fixed current Quiz passed status so an earlier two-question attempt does not satisfy the revised five-question Lesson 1 assessment; the historical record remains saved.
+- Made the new responses part of ZIP backup/restore, preserving compatibility with existing backups.
+- Refreshed offline precache for the free static site and added regression tests.
+
+
 ## 0.1.2 — Learn for understanding
 
 - Expanded Lesson 1 into six explained research stages, worked case, comparisons, examples and five applied quiz questions.
