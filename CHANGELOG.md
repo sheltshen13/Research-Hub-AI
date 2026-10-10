@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.4 — Understanding research methodologies
+
+- Rebuilt Lesson 2 with detailed beginner explanations, comparative cases, glossary, ethical decision guidance and six scenario-based questions.
+- Added four guided stages for qualitative, quantitative, mixed methods and selecting a suitable approach, using the proven Lesson 1 interface.
+- Saved Lesson 2 written responses locally and supported backup/restore without changing the database or ZIP schema.
+- Retained previous lesson attempts without falsely matching historical answers to newly written questions.
+- Updated offline cache and automatic regression tests. All official features remain free without a required AI API or account.
+
+
 ## 0.1.3 — Four research concepts, step by step
 
 - Added a beginner-friendly four-stage guided exercise on Observation, Question, Evidence and Limitation, with explanations, AI-learning examples and one knowledge check per concept.
