@@ -1,36 +1,75 @@
-# Research Hub AI
+# Research Hub AI — First Working Release (v0.1.0)
 
-**Learn · Discover · Research · Analyse · Publish**
+**Free. Offline-first. Private by default. No paid APIs or mandatory accounts.**
 
-Research Hub AI is a free, community-developed research learning and workspace application for first-time graduates, undergraduate and postgraduate students, and independent researchers.
+This is a working prototype of the Research Hub AI master blueprint. It is deliberately built with **HTML, CSS, and native JavaScript with zero npm dependencies** so its first release can be developed, tested and used directly on an Android phone. React/TypeScript may be introduced in a future migration after the first workflows are proven. The core app has no server backend and does not send project data anywhere.
 
-## Project goals
+## What works
 
-- Teach research through guided lessons, practical exercises, and a Research Skills Passport.
-- Connect learning with real research projects, from research questions to writing and reporting.
-- Provide **Teach Me**, **Guide Me**, and **Assist Me** mentor modes.
-- Work offline wherever possible, with private, local-first research storage and backups.
-- Never require a subscription or paid API to use the **official** Research Hub AI app.
-- Accept community improvements through reviewable pull requests.
+- Local learning profile with five experience levels.
+- Academy: six fully authored Research Fundamentals lessons, each with a glossary, exercise and quiz; an evidence-based Skills Passport.
+- Three mentoring modes (Teach Me, Guide Me, Assist Me) with offline rules and transparent limits; **not an AI language model**.
+- Create, edit, archive, restore, delete and navigate research projects through eight conceptual stages.
+- Local autosave of drafts and project fields; save status.
+- Manually enter and manage unverified sources.
+- Basic Research Lab: count, mean, median, min/max and sample standard deviation using practice numbers.
+- Project writing drafts and TXT export.
+- Portable `.zip` backup with `manifest.json` (SHA-256) and `data.json`, and validated, atomic restore (backup format v1).
+- Offline cached app after successful first online load; installable web app on supporting browsers.
 
-## Development status
+## Install and run on Android (Termux)
 
-**Prototype v0.1.0 exists and is being prepared for upload.** The initial repository README does not mean the full application has been published here yet.
+1. Install/launch a maintained Termux distribution.
+2. Unzip the `Research_Hub_AI_v0.1.0_Source.zip` archive into a folder accessible to Termux. Grant shared storage access once using `termux-setup-storage` if needed, and approve the Android prompt.
+3. In Termux, run:
 
-The prototype uses HTML, CSS, and native JavaScript without npm dependencies so it can be developed and tested on an Android phone through Termux.
+```bash
+pkg update
+pkg install nodejs unzip
+termux-setup-storage
+mkdir -p ~/research-hub-ai
+unzip -o ~/storage/downloads/Research_Hub_AI_v0.1.0_Source.zip -d ~/research-hub-ai
+cd ~/research-hub-ai
+npm start
+```
 
-## Community and licence
+4. Open **http://127.0.0.1:5173** in Chrome on the same phone. Keep Termux running while using the localhost version. The web app can continue working offline after the required assets have been cached; a first online load is still needed when hosted publicly.
+5. On supported browsers, use **Add to Home screen / Install app** to install the PWA. This does not publish it publicly.
+6. To stop the local server, press `Ctrl+C` in Termux.
 
-The intended code licence is **Apache License 2.0**. The full LICENSE and source files must be added before treating the repository as a complete licensed source release. Apache 2.0 permits commercial use of forks, but the **official** project aims to remain free.
+No `npm install` is needed. If your archive has been renamed by Android, use the actual downloaded filename in the `unzip` command. Some Android storage folders have restrictions; the example copies source files into Termux home to avoid those restrictions.
 
-Security-sensitive changes and official releases should be reviewed by maintainers. Never commit personal research data, private documents, credentials, or backup archives.
+### Running tests
 
-## Roadmap
+```bash
+cd ~/research-hub-ai
+npm test
+```
 
-1. Publish and test v0.1.0 source.
-2. Add GitHub Actions testing and branch protection.
-3. Test installation on Android and offline recovery.
-4. Expand research library, methods guidance, citation verification, and analysis tools.
-5. Assess free public hosting for the installable web app.
+### Source code and free static hosting
 
-_Research Hub AI is a work in progress; it is not affiliated with or accredited by a university._
+All app files can be deployed unchanged to a static hosting provider that serves the project at the domain root under HTTPS (for example a verified free static-site plan). No Functions or databases are required. A GitHub public repository may contain this **source only**, never private research exports. Configure branch protections and maintainer reviews before accepting community contributions. Check your hosting provider's current free limits and terms.
+
+## Privacy and backup warnings
+
+- All project data is stored in the browser's IndexedDB for the specific origin (for example `http://127.0.0.1:5173`). Hosting the site at a different URL uses a **different browser storage area**. Export from the first URL and restore into the second.
+- IndexedDB is not inherently encrypted. Clearing site storage, browser changes, or losing the phone may remove data. Use Settings → Download ZIP backup regularly and retain backups separately. A successful downloaded file should be verified and test-restored.
+- ZIP backups are **unencrypted**. Do not store confidential research participant data in this prototype.
+- The app cannot issue institutional ethics approval or guarantee academic findings. Mentor output is curated, rule-based guidance and may be incomplete.
+- This release has no analytics, paid services, remote AI inference or hidden data uploads.
+
+## Technical design
+
+- Offline cache: `sw.js`, cache-first for the exact core app files.
+- Local data: IndexedDB database `research-hub-ai-local`, schema version 1, single `records` object store for simplicity and atomic full restore.
+- Backup: ZIP with `manifest.json` and `data.json`, SHA-256 manifest and per-entry ZIP CRC32. Restore refuses unknown schemas or mismatched checksums, and checks everything before replacing data in one IndexedDB transaction. The 15 MB import cap intentionally protects limited-memory devices.
+- App shell: dependency-free ES modules, accessible native forms, PWA manifest, independent navigation and automatic saves.
+- No central authentication, server, data collection, or commercial third-party dependency.
+
+## Known limitations and next release
+
+Version 0.2 will expand the Academy beyond fundamentals and improve the connected beginner journey, including an explicit research question builder, source-to-project linking and richer skills evidence. Later versions will address academic database adapters, DOI verification, statistics/qualitative analysis, document export and optional local AI where compatible. These are **not falsely presented as complete in this release**.
+
+## Licence and community
+
+Original application source code: Apache License 2.0. The official service remains free. Apache-2.0 does allow legally compliant commercial forks; it does not give contributors access to the official repository. Educational content has been newly authored for this prototype; see `CONTENT_LICENSE.md`.
