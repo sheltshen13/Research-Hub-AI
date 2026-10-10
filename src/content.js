@@ -96,10 +96,99 @@ export const lessons=[
       {q:'Your voluntary survey found that 18 of 30 respondents reported long commuting times. Which conclusion is best?',options:['All students miss lectures because of commuting','Commuting has been proven to cause absence','The university should immediately change all timetables','18 of the 30 respondents reported long commutes; further evidence is needed before generalising or inferring cause'],correct:3,why:'Describe the sample accurately and acknowledge what the results cannot prove. Respondents may not represent everyone.'}
     ]
   },
-  {id:'rf2',title:'Research types and approaches',minutes:14,skill:'Understanding methodologies',glossary:[['Qualitative','Research exploring experiences, meanings or processes using non-numerical material.'],['Quantitative','Research measuring variables or numerical patterns.'],['Mixed methods','A deliberate combination of qualitative and quantitative approaches.']],objectives:['Distinguish qualitative, quantitative and mixed methods.','Connect the method to the question.'],paragraphs:[
-    'Qualitative research can investigate meanings and experiences through interviews, observations and documents. Quantitative research uses measurements and numbers to explore patterns, differences or associations. Mixed-methods research combines both approaches when that combination helps answer the question.',
-    'No approach is automatically better. A research question about “how students experience online learning” differs from one asking “what proportion of students attend weekly?” A suitable design considers the question, ethics, data and resources.'
-  ],example:'Understanding why learners avoid an online forum might involve interviews. Estimating the percentage who log in weekly might use usage data. Combining both can answer different aspects of a single problem.',practice:'Create one qualitative and one quantitative question about the same topic.',quiz:[{q:'Interviews about students’ experiences are usually associated with:',options:['Qualitative research','Only laboratory experiments','Automatic proof of causation'],correct:0,why:'Interviews can be used to investigate meanings and experiences; their analysis still requires a method.'},{q:'Which is a quantitative research question?',options:['How do learners describe isolation?','What percentage of learners attend each week?','Why do participants feel excluded?'],correct:1,why:'A percentage is a numerical measurement.'}]},
+  {
+    id:'rf2',title:'Research types and approaches',minutes:40,skill:'Understanding methodologies',
+    glossary:[
+      ['Qualitative research','A research approach that investigates meanings, experiences, processes or contexts, often through interviews, observations and text.'],
+      ['Quantitative research','A research approach that uses numerical measurements and statistical methods to describe patterns, estimate differences or explore relationships.'],
+      ['Mixed-methods research','An intentional design that collects and integrates qualitative and quantitative evidence to answer a broader research question.'],
+      ['Research design','The overall plan connecting a question to sampling, data collection, analysis and interpretation.'],
+      ['Variable','A characteristic that can have different values, such as attendance rate or a score on a learning test.'],
+      ['Thematic analysis','A structured approach to identifying and interpreting patterns of meaning within qualitative material.'],
+      ['Integration','In mixed-methods work, bringing the two forms of evidence together to generate a joint interpretation.'],
+      ['Causation','A claim that one factor makes another outcome happen; it requires an appropriate design and cannot be inferred from correlation alone.']
+    ],
+    objectives:[
+      'Explain qualitative, quantitative and mixed-methods research in plain language.',
+      'Give a suitable research question and type of evidence for each approach.',
+      'Explain why mixed methods must integrate different types of evidence rather than simply collect both.',
+      'Choose and justify a feasible research approach for a beginner project.',
+      'Recognise that participant views, numerical correlations and study results have limitations.'
+    ],
+    paragraphs:[
+      'Researchers do not select a method because a tool is fashionable. They start with the question they want to answer. Some questions ask about experiences and reasons; others ask how many, how often or whether two measured things are related.',
+      'Three broad approaches are qualitative, quantitative and mixed methods. Each can be useful. None is automatically more scientific or superior, and the best choice depends on the question, ethical requirements, available evidence, skills and resources.',
+      'This lesson compares all three using a familiar example: students using generative AI to learn. The point is not to decide in advance whether AI is good or bad, but to understand what each approach can and cannot show.'
+    ],
+    teachingBlocks:[
+      {title:'1. Start from the question, not the software',paragraphs:[
+        'Compare three questions: “How do students describe using AI to understand difficult topics?”; “What percentage of students use AI at least once a week?”; and “How can usage patterns and students’ experiences together explain AI use?” These questions require different evidence.',
+        'The first asks about experiences, the second about numerical frequency and the third deliberately combines two kinds of evidence. You do not need to know statistics yet to recognise the difference.'
+      ]},
+      {title:'2. Qualitative research — understanding experiences and meaning',paragraphs:[
+        'Qualitative research asks questions such as how people experience something, what it means to them and why a process unfolds in a particular context. A researcher might interview students, observe study behaviour with proper permission or analyse written reflections.',
+        'A researcher usually examines the material systematically, for example by coding interview text and developing themes. One possible theme might be “AI makes explanations feel less intimidating,” while another might be “AI encourages copying without reflection.” Themes must be grounded in actual evidence, not invented examples.',
+        'Qualitative findings provide rich detail about the studied people and settings. They should not automatically be treated as numerical estimates of what all students believe.'
+      ]},
+      {title:'3. Quantitative research — measuring patterns with numbers',paragraphs:[
+        'Quantitative research uses defined measurements such as counts, proportions, test scores and time spent on learning. For example: “What percentage of sampled students use AI every week?” or “Is AI-use frequency associated with performance on a specified test?”',
+        'Researchers might use a structured survey, existing attendance records or a carefully designed experiment. Statistical analysis can summarise the data and estimate differences or associations while accounting for uncertainty.',
+        'Important: finding that frequent AI users have higher scores does not prove that using AI caused the scores. Motivation, prior knowledge, support and other factors may differ between groups.'
+      ]},
+      {title:'4. Mixed methods — combining and integrating evidence',paragraphs:[
+        'Mixed-methods research intentionally brings quantitative and qualitative findings together. For example, a researcher could measure how frequently students use AI, interview selected students about their reasons, and compare the findings to understand patterns and experiences.',
+        'Using a survey and interviews is not, by itself, enough to call a project rigorous mixed methods. The researcher should explain why both types are needed, how they will be analysed and how the results will be connected or compared in the interpretation.',
+        'Mixed methods can provide a more rounded answer but requires additional time, design expertise and ethical planning. A focused single-method project may be more appropriate for a first study.'
+      ]},
+      {title:'5. A method is not the same as a question format',paragraphs:[
+        'The method depends on how evidence is gathered and analysed. An interview can contain numeric questions; a survey can contain open-ended answers. “Interview equals qualitative” and “survey equals quantitative” are useful first approximations, not universal rules.',
+        'For example, a survey question asking respondents to rate confidence from 1 to 5 generates numerical data. An open-text question asking them to describe frustration generates text suitable for qualitative analysis. Explain your actual analysis rather than relying only on the instrument label.'
+      ]},
+      {title:'6. Choosing a suitable design — five practical checks',paragraphs:[
+        'First ask what you need to know. Next decide which evidence would answer it. Then check whether you can obtain that evidence ethically and lawfully. Consider who or what you will study and what analysis you can carry out correctly. Finally, identify the limits of the design.',
+        'If you are just beginning, a small literature-based project can help you learn without collecting identifiable participant data. Studies involving people may require institutional ethics approval before recruitment or data collection.'
+      ]},
+      {title:'7. What each approach cannot automatically prove',paragraphs:[
+        'Qualitative interviews can help explain students’ reported experiences, but do not on their own prove that AI improved test scores. Quantitative association can describe a pattern, but it does not automatically establish cause and effect. Mixed methods add context and comparisons, not a guarantee of causal certainty.',
+        'In every approach, explain sampling, how evidence was obtained and analysed, what is uncertain, and which conclusions are justified. A well-argued limitation is a sign of responsible research, not a weakness to hide.'
+      ]}
+    ],
+    example:'One topic, three questions: Qualitative — “How do new university students describe using AI to understand their coursework?” Quantitative — “What proportion of first-year students report using AI at least weekly?” Mixed methods — “How do measured AI-use patterns relate to students’ reported reasons and experiences?”',
+    workedExample:{
+      title:'Worked comparison: studying how students use AI',
+      steps:[
+        ['Shared starting topic','A group of students uses AI while preparing for classes. We do not know whether it benefits or hinders learning.'],
+        ['Qualitative route','With suitable permissions, interview a purposively selected group about when and why they use AI. Analyse transcripts for patterns of meaning and acknowledge the context.'],
+        ['Quantitative route','Define measures such as weekly AI use and a specified learning assessment. Use an appropriate sample and analyse the numbers, noting confounding and uncertainty.'],
+        ['Mixed-methods route','Collect structured usage measurements and selected interviews, analyse each, then examine how interview themes explain or challenge the numerical patterns.'],
+        ['Ethical planning','Before recruiting participants, check institutional approval, informed consent, privacy and appropriate storage. Do not put sensitive participant data into this prototype.'],
+        ['Responsible conclusion','Report what the actual evidence demonstrates. Opinions about helpfulness do not automatically equal objectively improved learning, and a correlation does not establish causation.']
+      ],
+      takeaway:'Different research approaches produce different kinds of answers. Choose the approach that fits your question and show how each conclusion follows from actual evidence.'
+    },
+    comparisons:[
+      ['Question about experiences','“How much does everyone benefit from AI?” is too vague to guide meaningful interviews.','Ask how a defined group describes AI use and analyse their experiences with a transparent method.'],
+      ['Question about numbers','“Do students like AI?” is not yet a clearly measured variable.','Specify a measurable outcome such as proportion using AI weekly, define the sample and analyse numerical uncertainty.'],
+      ['Claim about causation','“AI users scored higher, therefore AI caused improvement.”','Explore confounders and choose a design capable of supporting any causal claim; otherwise report an association.'],
+      ['Combining methods','Interviewing one friend after a survey without connecting the findings.','Plan how qualitative explanations and numerical patterns will be integrated to address the same broader question.']
+    ],
+    practice:'Build three ways to research the same topic: one about experiences, one about numbers and one that meaningfully combines both. Use the guided activity, then explain which approach you would choose and why.',
+    practicePrompts:[
+      'Qualitative: What would you ask to understand someone’s experience?',
+      'Quantitative: What number or measurement would help answer a different question?',
+      'Mixed methods: How could the two kinds of evidence be connected?',
+      'Choice: Which approach best matches your main question, time, access and ethical requirements?'
+    ],
+    reflectionPrompt:'Explain the difference between qualitative, quantitative and mixed-methods research in your own words. For your AI-and-learning idea, which would you choose first and why? What still confuses you?',
+    quiz:[
+      {q:'You want to understand why students feel confident or anxious when using AI. Which approach is most directly suited to exploring their experiences?',options:['Qualitative research with appropriate interviews or written reflections','Counting only how many students own smartphones','Assuming all students feel the same'],correct:0,why:'Exploring experiences and meanings is well suited to a qualitative approach, although the specific method still needs careful design.'},
+      {q:'Which question is most clearly quantitative?',options:['How do students describe trusting AI responses?','What proportion of a defined student sample reports using AI each week?','Why do learners prefer some explanations?'],correct:1,why:'A proportion is a numerical quantity; the group, time period and measure must be clearly defined.'},
+      {q:'What is a defining feature of a planned mixed-methods study?',options:['Using interviews and a survey without comparing their results','Replacing all measurements with personal opinions','Intentionally integrating qualitative and quantitative findings to answer a shared question'],correct:2,why:'Mixed-methods research requires a reason to use both forms of evidence and a clear plan for integrating qualitative and quantitative findings into a joint interpretation.'},
+      {q:'A survey shows frequent AI users have higher test scores. Which interpretation is justified by this observation alone?',options:['AI definitely caused better learning','An association was observed, but other explanations and study limitations must be examined','The survey proves AI can never harm learning'],correct:1,why:'An association is not sufficient to establish causation; groups may differ for many reasons.'},
+      {q:'You have little time, no ethics approval and no permission to collect student data. What is a sensible beginner starting point?',options:['Conduct interviews anyway because the project is small','Copy another researcher’s dataset and claim it is yours','Review relevant published studies and develop a feasible, ethical proposal without collecting participants’ data'],correct:2,why:'A literature-based starting task is feasible and avoids unauthorized participant research. Check the applicable rules before collecting new data.'},
+      {q:'Which statement about surveys and interviews is most accurate?',options:['Every survey is quantitative and every interview is qualitative','Open-text survey answers can be analysed qualitatively, while numeric interview responses may be summarised quantitatively','One interview always represents the entire population'],correct:1,why:'Approach depends on the research question, evidence and analysis—not just whether the instrument is called a survey or interview.'}
+    ]
+  },
   {id:'rf3',title:'Questions, evidence and sources',minutes:12,skill:'Evaluating evidence',glossary:[['Primary source','Original records or material relevant to the inquiry.'],['Secondary source','A source interpreting or analysing existing material.'],['Peer review','A process in which specialists evaluate a manuscript before publication.']],objectives:['Evaluate whether a claim is supported.','Distinguish common source types.'],paragraphs:[
     'A claim is not reliable merely because it sounds convincing. Ask who produced the information, when, how the evidence was collected and whether alternative explanations are possible. A scholarly paper may be relevant without being high quality.',
     'Primary and secondary sources serve different purposes. An original interview transcript is primary material for that interview study; a review discussing many studies is secondary analysis. Peer review can help quality control but is not a guarantee of correctness.'
