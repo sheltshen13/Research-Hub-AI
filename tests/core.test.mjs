@@ -51,7 +51,7 @@ test('expanded lesson notes survive the same verified ZIP backup as earlier quiz
 });
 test('invalid or oversized lesson notes are rejected during backup import',async()=>{
  const note={id:'lesson-note:rf1',type:'lesson-note',lessonId:'rf1',practice:'x'.repeat(8001),reflection:''};
- await assert.rejects(()=>inspectBackup(await createBackup([note])),/malformed lesson notes/);
+ await assert.rejects(inspectBackup(await createBackup([note])),/malformed lesson notes/);
 });
 test('new Academy UI does not claim quiz success means mastery',async()=>{
  const app=await readFile(new URL('../src/app.js',import.meta.url),'utf8');
