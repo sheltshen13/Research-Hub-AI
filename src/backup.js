@@ -71,6 +71,7 @@ export async function inspectBackup(bytes){
     if(r.type==='project'&&(typeof r.title!=='string'||r.title.length>140))throw new Error('Backup contains a malformed project.');
     if(r.type==='attempt'&&(!Array.isArray(r.answers)||typeof r.lessonId!=='string'))throw new Error('Backup contains malformed lesson results.');
     if(r.type==='lesson-note'&&(typeof r.lessonId!=='string'||r.lessonId.length>60||typeof r.practice!=='string'||r.practice.length>8000||typeof r.reflection!=='string'||r.reflection.length>8000))throw new Error('Backup contains malformed lesson notes.');
+    if(r.type==='lesson-note'){for(const field of ['guide_observation','guide_question','guide_evidence','guide_limitation']) if(Object.hasOwn(r,field)&&(typeof r[field]!=='string'||r[field].length>3000))throw new Error('Backup contains malformed guided practice.');}
   }
   return {records:body.records,exportedAt:body.exportedAt,count:body.records.length,projectCount:body.records.filter(x=>x.type==='project').length};
 }

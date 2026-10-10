@@ -1,4 +1,4 @@
-# Research Hub AI — Web-ready prototype (v0.1.2)
+# Research Hub AI — Web-ready prototype (v0.1.3)
 
 **Free. Offline-first. Private by default. No paid APIs or mandatory accounts.**
 
@@ -15,6 +15,7 @@ This is a working prototype of the Research Hub AI master blueprint. It is delib
 - Basic Research Lab: count, mean, median, min/max and sample standard deviation using practice numbers.
 - Project writing drafts and TXT export.
 - Locally saved lesson practice and reflection notes, included in backups. Previous quiz attempts are preserved even when the lesson changes.
+- New in v0.1.3: Lesson 1 has a one-concept-at-a-time guided exercise with four locally saved answers (Observation, Question, Evidence, Limitation), examples, deterministic checks and a recap. Original long-form practice remains unchanged. Historical 2-question results remain visible but no longer count as passing the new 5-question check.
 - Portable `.zip` backup with `manifest.json` (SHA-256) and `data.json`, and validated, atomic restore (backup format v1).
 - Offline cached app after successful first online load; installable web app on supporting browsers.
 

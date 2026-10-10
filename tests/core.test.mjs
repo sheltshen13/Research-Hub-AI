@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {parseNumbers,summarize} from '../src/stats.js';
 import {packZip,unpackZip,createBackup,inspectBackup,crc32} from '../src/backup.js';
 import {lessons,matchMentorTopic} from '../src/content.js';
+import {introGuidedSteps,guidedKeys} from '../src/guided.js';
 import {execFileSync} from 'node:child_process';
 import {readFile} from 'node:fs/promises';
 
@@ -67,4 +68,50 @@ test('all browser JavaScript modules parse successfully',()=>{
  for(const path of ['src/app.js','src/content.js','src/data.js','src/backup.js','src/stats.js']){
   assert.doesNotThrow(()=>execFileSync(process.execPath,['--check',new URL('../'+path,import.meta.url).pathname]));
  }
+});
+
+test('four guided research stages contain clear teaching, examples and valid mini checks',()=>{
+ assert.deepEqual(guidedKeys,['guide_observation','guide_question','guide_evidence','guide_limitation']);
+ assert.equal(new Set(guidedKeys).size,4);
+ for(const step of introGuidedSteps){
+   assert.ok(step.title.length>4);
+   assert.ok(step.simple.length>25);
+   assert.ok(step.example.length>25);
+   assert.ok(step.prompt.length>25);
+   assert.ok(step.hint.length>20);
+   assert.ok(step.check.options.length>=3);
+   assert.ok(step.check.correct>=0&&step.check.correct<step.check.options.length);
+   assert.ok(step.check.explanation.length>35);
+ }
+});
+test('new guided responses are backed up without changing the older practice answer',async()=>{
+ const note={
+  id:'lesson-note:rf1',type:'lesson-note',lessonId:'rf1',
+  practice:'My original response about students using AI is kept here.',
+  reflection:'I understand some of the concepts.',
+  confidence:'practising',
+  guide_observation:'I noticed some classmates using AI to study.',
+  guide_question:'How do students at one college describe AI usage for studying?',
+  guide_evidence:'I could review published research.',
+  guide_limitation:'Self-reported understanding might differ from learning outcomes.'
+ };
+ const records=[{id:'profile',type:'profile',name:'Researcher 01'},note];
+ const restored=await inspectBackup(await createBackup(records));
+ assert.deepEqual(restored.records,records);
+});
+test('guided writing import rejects invalid or oversized fields',async()=>{
+ for(const wrong of [42,'x'.repeat(3001)]){
+  const note={id:'lesson-note:rf1',type:'lesson-note',lessonId:'rf1',practice:'',reflection:'',guide_question:wrong};
+  await assert.rejects(inspectBackup(await createBackup([note])),/malformed guided practice/);
+ }
+});
+test('Academy shows four-step guided learning and only passes current quiz format',async()=>{
+ const app=await readFile(new URL('../src/app.js',import.meta.url),'utf8');
+ assert.ok(app.includes("guidedPracticeView(saved,noteId)"));
+ assert.ok(app.includes("case 'guided-step'"));
+ assert.ok(app.includes("case 'guided-check'"));
+ assert.ok(app.includes("case 'guided-summary'"));
+ assert.ok(app.includes("data-field=\"practice\""));
+ assert.ok(app.includes("x.answers.length===l.quiz.length"));
+ assert.ok(app.includes("function renderGuidedSummary(root)"));
 });
