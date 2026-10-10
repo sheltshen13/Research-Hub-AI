@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {parseNumbers,summarize} from '../src/stats.js';
 import {packZip,unpackZip,createBackup,inspectBackup,crc32} from '../src/backup.js';
 import {lessons,matchMentorTopic} from '../src/content.js';
-import {introGuidedSteps,guidedKeys} from '../src/guided.js';
+import {introGuidedSteps,guidedKeys,methodsGuidedSteps,guidedLessons} from '../src/guided.js';
 import {execFileSync} from 'node:child_process';
 import {readFile} from 'node:fs/promises';
 
@@ -17,8 +17,9 @@ test('single observation has no sample standard deviation',()=>{const x=summariz
 test('number parsing rejects malformed input',()=>{assert.deepEqual(parseNumbers(' 1,2\n3;4 '),[1,2,3,4]);assert.throws(()=>parseNumbers('1,abc,3'),/numbers only/);assert.throws(()=>parseNumbers(''),/one number/);});
 test('offline academy has exactly six full lessons with valid quizzes',()=>{
  assert.equal(lessons.length,6);
- for(const l of lessons){assert.ok(l.paragraphs.length>=2);assert.ok(l.glossary.length>=2);assert.equal(l.quiz.length,l.id==='rf1'?5:2);for(const q of l.quiz)assert.ok(q.correct>=0&&q.correct<q.options.length);} 
+ for(const l of lessons){assert.ok(l.paragraphs.length>=2);assert.ok(l.glossary.length>=2);assert.equal(l.quiz.length,l.id==='rf1'?5:l.id==='rf2'?6:2);for(const q of l.quiz)assert.ok(q.correct>=0&&q.correct<q.options.length);} 
  const intro=lessons.find(l=>l.id==='rf1'); assert.ok(intro.teachingBlocks.length>=6);assert.ok(intro.workedExample.steps.length>=6);assert.ok(intro.comparisons.length>=3);assert.ok(intro.practicePrompts.length>=3);assert.ok(intro.reflectionPrompt);
+ const methods=lessons.find(l=>l.id==='rf2');assert.ok(methods.minutes>=35);assert.ok(methods.teachingBlocks.length>=6);assert.ok(methods.workedExample.steps.length>=5);assert.ok(methods.comparisons.length>=3);assert.ok(methods.glossary.length>=6);assert.ok(methods.reflectionPrompt);
 });
 test('mentor topic routing is explicit, not a fabricated AI answer',()=>{
  assert.equal(matchMentorTopic('How do I analyse my data?'),'analysis');
@@ -65,7 +66,7 @@ test('new Academy UI does not claim quiz success means mastery',async()=>{
 });
 
 test('all browser JavaScript modules parse successfully',()=>{
- for(const path of ['src/app.js','src/content.js','src/data.js','src/backup.js','src/stats.js']){
+ for(const path of ['src/app.js','src/content.js','src/guided.js','src/data.js','src/backup.js','src/stats.js']){
   assert.doesNotThrow(()=>execFileSync(process.execPath,['--check',new URL('../'+path,import.meta.url).pathname]));
  }
 });
@@ -107,11 +108,64 @@ test('guided writing import rejects invalid or oversized fields',async()=>{
 });
 test('Academy shows four-step guided learning and only passes current quiz format',async()=>{
  const app=await readFile(new URL('../src/app.js',import.meta.url),'utf8');
- assert.ok(app.includes("guidedPracticeView(saved,noteId)"));
+ assert.ok(app.includes("guidedPracticeView(saved,noteId,l.id)"));
  assert.ok(app.includes("case 'guided-step'"));
  assert.ok(app.includes("case 'guided-check'"));
  assert.ok(app.includes("case 'guided-summary'"));
  assert.ok(app.includes("data-field=\"practice\""));
  assert.ok(app.includes("x.answers.length===l.quiz.length"));
  assert.ok(app.includes("function renderGuidedSummary(root)"));
+});
+
+test('methods guided practice has four clear, distinct stages with accurate mini checks',()=>{
+ assert.deepEqual(methodsGuidedSteps.map(step=>step.key),['method_qual','method_quant','method_mixed','method_choice']);
+ assert.equal(guidedLessons.rf1.steps,introGuidedSteps);
+ assert.equal(guidedLessons.rf2.steps,methodsGuidedSteps);
+ assert.ok(guidedLessons.rf2.intro.includes('qualitative'));
+ for(const step of methodsGuidedSteps){
+  assert.ok(step.title.length>=10);
+  assert.ok(step.simple.length>80);
+  assert.ok(step.example.length>50);
+  assert.ok(step.prompt.length>40);
+  assert.ok(step.hint.length>50);
+  assert.equal(step.check.options.length,3);
+  assert.ok(step.check.correct>=0&&step.check.correct<3);
+  assert.ok(step.check.explanation.length>70);
+ }
+});
+test('Lesson 2 quiz includes mixed-methods integration, causation, and research ethics',()=>{
+ const lesson=lessons.find(l=>l.id==='rf2');
+ assert.equal(lesson.quiz.length,6);
+ assert.ok(lesson.quiz.some(q=>/integrat/i.test(q.why)));
+ assert.ok(lesson.quiz.some(q=>/causa/i.test(q.why)));
+ assert.ok(lesson.quiz.some(q=>/ethic|permission|unauthor/i.test(q.why)));
+ assert.equal(new Set(lesson.quiz.map(q=>q.correct)).size,3);
+});
+test('preserve original research answers while restoring new Lesson 2 guided notes and historical checks',async()=>{
+ const records=[
+  {id:'profile',type:'profile',name:'Researcher 01'},
+  {id:'lesson-note:rf1',type:'lesson-note',lessonId:'rf1',practice:'My original AI-learning response',reflection:'Research is systematic',confidence:'practising',guide_observation:'AI usage is common'},
+  {id:'old-rf2',type:'attempt',lessonId:'rf2',score:2,answers:[0,1],createdAt:'2026-10-10T00:00:00.000Z'},
+  {id:'lesson-note:rf2',type:'lesson-note',lessonId:'rf2',practice:'I need to compare methods',reflection:'Mixed methods integrates qualitative and quantitative evidence',confidence:'practising',method_qual:'How do students experience AI?',method_quant:'How many use it weekly?',method_mixed:'Link reported reasons with measured weekly use',method_choice:'Qualitative first, because I want to understand experiences'}
+ ];
+ const inspected=await inspectBackup(await createBackup(records));
+ assert.deepEqual(inspected.records,records);
+ assert.equal(inspected.records.find(r=>r.id==='lesson-note:rf1').practice,'My original AI-learning response');
+});
+test('backup rejects oversized and non-text Lesson 2 notes',async()=>{
+ for(const field of ['method_qual','method_quant','method_mixed','method_choice']){
+  for(const invalid of ['x'.repeat(3001),17]){
+   const record={id:'lesson-note:rf2',type:'lesson-note',lessonId:'rf2',practice:'',reflection:'',[field]:invalid};
+   await assert.rejects(inspectBackup(await createBackup([record])),/malformed guided practice/);
+  }
+ }
+});
+test('method guide reuses existing navigation, autosave and honest assessment history logic',async()=>{
+ const app=await readFile(new URL('../src/app.js',import.meta.url),'utf8');
+ assert.ok(app.includes('guidedLessons[lessonId]'));
+ assert.ok(app.includes('guidedLessons[root.dataset.guidedLesson]'));
+ assert.ok(app.includes("field.startsWith('method_')"));
+ assert.ok(app.includes('Previous question wording and choices have changed.'));
+ assert.ok(app.includes("x.answers.length===l.quiz.length"));
+ assert.ok(app.includes('renderGuidedSummary(root)'));
 });
