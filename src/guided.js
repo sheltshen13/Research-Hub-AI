@@ -176,6 +176,175 @@ export const evidenceGuidedSteps = [
   }
 ];
 
+
+// Lesson 4: ethical planning, not an ethics approval or exemption determination.
+export const ethicsGuidedSteps = [
+  {
+    key:'ethics_risk',title:'Identify the people and risks',
+    simple:'Before designing a study, think about who could be affected and what might go wrong. Harm includes more than physical injury: pressure, embarrassment, privacy breaches or unfair treatment may matter.',
+    example:'Students interviewed about AI and coursework might worry their lecturer will learn about their answers or penalise them.',
+    prompt:'For an imaginary interview study about AI use, identify two possible risks and a practical way to reduce each one.',
+    hint:'Consider power differences, sensitive topics, identifiable details and who would see raw responses. This is a planning exercise, not a live study.',
+    check:{
+      question:'A lecturer recruits students whose grades they control. What should the research team consider?',
+      options:['Students may feel pressured even when no one explicitly threatens them','They must be willing because the lecturer asked','The lecturer can publish named responses'],
+      correct:0,
+      explanation:'A power relationship can affect voluntary participation. An ethics-informed recruitment plan should minimise undue influence and protect students.'
+    }
+  },
+  {
+    key:'ethics_consent',title:'Plan review and informed consent',
+    simple:'Applicable institutional ethics requirements must be checked before recruiting participants or collecting covered data. Consent should be understandable and genuinely voluntary, with realistic information about activities, risks and participant rights.',
+    example:'A hypothetical participant information sheet explains the interview purpose, time, risks, researcher contact, confidentiality and any limits on withdrawal.',
+    prompt:'What would you ask your institution about ethics review? What information should a participant receive before deciding?',
+    hint:'Do not assume a small or online study is automatically exempt. An authorised reviewer must decide applicable requirements.',
+    check:{
+      question:'When should you seek required ethics approval for participant interviews?',
+      options:['Only after submitting the final report','Before relevant participant recruitment or data collection','Only when a student complains'],
+      correct:1,
+      explanation:'Ethics review and approval, when required, must generally be settled before participant recruitment or collection. A teaching app cannot approve a study.'
+    }
+  },
+  {
+    key:'ethics_privacy',title:'Protect identities and information',
+    simple:'Ask what information is actually needed and how it will be stored. Confidentiality protects information the researcher may know; anonymity means identities cannot reasonably be traced from the responses.',
+    example:'Removing names from recordings may not make an interview anonymous because voices and distinctive details can identify people.',
+    prompt:'Describe what participant information should be avoided, how access should be controlled and why removing names may be insufficient.',
+    hint:'This prototype and its ZIP backups are not encrypted or suitable for sensitive identifiable research data. Use institution-approved storage.',
+    check:{
+      question:'You remove names but keep identifiable voice recordings. What is true?',
+      options:['The recordings are necessarily anonymous','No privacy rules apply to audio','Identity may still be revealed, so approved confidentiality safeguards are needed'],
+      correct:2,
+      explanation:'Voices and contextual details can identify participants. Removing names is not, by itself, anonymisation.'
+    }
+  },
+  {
+    key:'ethics_integrity',title:'Make an honest research plan',
+    simple:'Record what you actually did, verify citations and handle AI assistance transparently under relevant policies. Do not invent participant data, approval letters, sources or results.',
+    example:'If an AI assistant suggests a citation, locate and verify the actual paper before including it. Report any required AI-use disclosure honestly.',
+    prompt:'Explain two rules you will follow to protect research integrity and one situation where you would ask a supervisor for guidance.',
+    hint:'Think about evidence verification, truthful reporting, handling AI outputs and requesting an amendment when a study plan changes.',
+    check:{
+      question:'Which action is responsible if an AI system produces a convincing but unverified research citation?',
+      options:['Present it as a real source because it looks scholarly','Locate and verify the publication before citing, and follow applicable AI policies','Invent missing journal details'],
+      correct:1,
+      explanation:'AI-generated references can be inaccurate or fabricated. Source verification and truthful reporting are research integrity responsibilities.'
+    }
+  }
+];
+
+// Lesson 5: examine how the research question, evidence and conclusion align.
+export const qualityGuidedSteps = [
+  {
+    key:'quality_design',title:'Start with the question and design',
+    simple:'Decide whether the study asks about experiences, numerical patterns or effects, then check whether its actual methods could answer that question.',
+    example:'If a study claims to measure learning gains but only asks whether students enjoyed an AI tutor, the measure does not directly test learning performance.',
+    prompt:'Describe a research question and the type of design or measurement that could answer it. Identify one mismatch to avoid.',
+    hint:'Ask “What is actually measured?” and “Does this evidence answer the question?” before evaluating a paper’s conclusion.',
+    check:{
+      question:'A study claims AI increases knowledge but measures only satisfaction. What is the main concern?',
+      options:['The measured outcome may not be valid evidence of knowledge gain','Satisfaction automatically proves better learning','Any survey can establish causation'],
+      correct:0,
+      explanation:'Satisfaction and knowledge are different constructs. Reliability of satisfaction ratings cannot establish validity for learning gains.'
+    }
+  },
+  {
+    key:'quality_sampling',title:'Check the sample and its limits',
+    simple:'Look at who was included and excluded. A large convenience sample can still be biased. Qualitative studies may use smaller purposefully selected groups to explore experiences, not to estimate population percentages.',
+    example:'A voluntary AI-interest club survey could overrepresent enthusiastic users even if hundreds respond.',
+    prompt:'Imagine a study of students using AI. Who was selected, who might be missing, and how would that affect generalisation?',
+    hint:'Do not use “bigger sample is always better” as your only quality criterion; sampling must fit the study purpose.',
+    check:{
+      question:'A survey recruits 900 people only from an AI-fan club. What remains a concern?',
+      options:['A large sample can never be biased','Selection bias may limit conclusions about all students','Every respondent represents everyone else'],
+      correct:1,
+      explanation:'Selection into an enthusiastic group may skew attitudes, regardless of sample size. Consider whom the study claims to represent.'
+    }
+  },
+  {
+    key:'quality_bias',title:'Look for bias and alternative explanations',
+    simple:'Study how participants were recruited, how questions were worded, how outcomes were measured and which results were reported. Other factors can explain an association.',
+    example:'AI users with high grades may also spend more time studying. Without a suitable design, the study cannot attribute grade differences solely to AI.',
+    prompt:'Identify one possible bias or confounder in an AI-and-learning study and suggest a realistic step to address it.',
+    hint:'Consider volunteer selection, leading survey language, prior knowledge and hidden differences between groups.',
+    check:{
+      question:'Frequent AI use and high grades occur together. What does that establish by itself?',
+      options:['AI definitely caused higher grades','Every student benefits from AI','An association requiring investigation of confounding and design limits'],
+      correct:2,
+      explanation:'A correlation is not proof of causation. Prior achievement, motivation and other differences may influence both variables.'
+    }
+  },
+  {
+    key:'quality_conclusion',title:'Write a balanced evidence judgement',
+    simple:'Explain what the evidence actually supports, one credible limitation and what additional study might help. Reproducible documentation matters, but private participant information should remain protected.',
+    example:'In a hypothetical volunteer survey, respondents may report AI helps confidence; that cannot show actual learning improvements for every student.',
+    prompt:'Write one cautious conclusion, one limitation and one useful next step for a study that interests you.',
+    hint:'Try “The sample reported…, but it does not demonstrate… because…” and avoid absolute words that overstate the findings.',
+    check:{
+      question:'Which statement fits a volunteer survey of students’ self-reported AI confidence?',
+      options:['All students learn faster because of AI','The surveyed respondents reported a pattern; learning effects and generalisation need further evidence','The survey proves a causal improvement in exam marks'],
+      correct:1,
+      explanation:'Balanced interpretation keeps the claim within what was measured and acknowledges sample, validity and causal limits.'
+    }
+  }
+];
+
+// Lesson 6: an introductory project proposal, not fabricated results.
+export const projectGuidedSteps = [
+  {
+    key:'project_question',title:'Define a focused starting question',
+    simple:'A project begins with an uncertainty worth investigating. A focused question defines the topic and limits, without presuming that the desired result is already known.',
+    example:'Which measures do selected published studies use to investigate AI-assisted learning among university students?',
+    prompt:'Write a tentative title and a single clear research question for a small project you could realistically begin.',
+    hint:'If your topic is broad, choose one group, question, kind of source or learning outcome and say what is outside your scope.',
+    check:{
+      question:'Which is a feasible first research question?',
+      options:['Does all AI help everyone everywhere?','Why is every technology always good?','What learning outcomes are measured in a defined set of published studies of AI and university students?'],
+      correct:2,
+      explanation:'A bounded question identifies the type of evidence to examine and can be refined through a literature review.'
+    }
+  },
+  {
+    key:'project_objectives',title:'Write two or three realistic objectives',
+    simple:'Objectives are practical activities that help answer your question. They should be neutral and possible to complete, even if evidence challenges your initial opinion.',
+    example:'Locate eligible studies, compare the definitions of learning outcomes and summarise the limitations of the evidence.',
+    prompt:'Write two or three actions your project must complete to answer the question. Avoid promises to prove a preferred result.',
+    hint:'Action words such as identify, describe, compare, examine and evaluate can help you write realistic objectives.',
+    check:{
+      question:'Which objective fits a literature-based project?',
+      options:['Compare how eligible published studies measure learning','Invent interviews confirming AI is useful','Prove every student must use AI'],
+      correct:0,
+      explanation:'A literature study can analyse traceable published evidence and its methods without inventing new participant data.'
+    }
+  },
+  {
+    key:'project_evidence',title:'Plan sources, methods and analysis',
+    simple:'For each objective, identify what real information you need, where it would come from and how you would examine it. Check ethics and access conditions before using data.',
+    example:'Source: real academic studies. Method: record study question, sample, learning measures, findings and limitations, then compare them transparently.',
+    prompt:'What sources or data would answer your question? How would you compare or analyse them, and what ethics or access rules apply?',
+    hint:'If you lack participant access or required approval, you can start by critically reading accessible published literature.',
+    check:{
+      question:'What is a responsible evidence plan for a beginner without approval to recruit students?',
+      options:['Run unapproved interviews secretly','Use traceable published sources for a scoped review, and seek guidance before any participant research','Generate hypothetical student responses and report them as real'],
+      correct:1,
+      explanation:'A literature-based exercise can be a feasible start, while participant activities require attention to institutional ethics and access rules.'
+    }
+  },
+  {
+    key:'project_plan',title:'Check feasibility and plan next steps',
+    simple:'Set realistic milestones, list risks, protect data and decide what the finished project will actually deliver. A proposal is a plan; it must not present imagined findings as results.',
+    example:'Milestones: refine topic, build verified source log, appraise evidence, draft comparison, review limitations and submit a transparent report.',
+    prompt:'List your first three milestones, one likely obstacle, one mitigation and one limitation to discuss in your eventual report.',
+    hint:'Consider time, access, skills, supervisor feedback, credible citations, backups and the difference between a proposal and completed study.',
+    check:{
+      question:'Which action shows responsible progress on a first project?',
+      options:['Draft a plan, verify sources, document decisions and revise when evidence challenges assumptions','Declare successful results before analysing any evidence','Publish private participant records in a public repository'],
+      correct:0,
+      explanation:'Research planning should be transparent, evidence-responsive, feasible and protective of confidential information.'
+    }
+  }
+];
+
 export const guidedLessons = {
   rf1: {
     title:'Guided practice: four ideas, one at a time',
@@ -194,5 +363,23 @@ export const guidedLessons = {
     intro:'Examine one research topic in four stages. Refine the question, identify the claim, check possible evidence and write a cautious conclusion. Your notes save locally.',
     recapTitle:'Your evidence-checking notes',
     steps:evidenceGuidedSteps
+  },
+  rf4: {
+    title:'Guided practice: plan ethical research',
+    intro:'Identify possible harms, review and consent needs, privacy measures and research-integrity safeguards. These fictional exercises never authorise participant research.',
+    recapTitle:'Your ethical research plan',
+    steps:ethicsGuidedSteps
+  },
+  rf5: {
+    title:'Guided practice: critically appraise a study',
+    intro:'Examine a research question, sampling, bias and a fair conclusion. Your answers are saved locally and are not automatically graded as practical competence.',
+    recapTitle:'Your study appraisal notes',
+    steps:qualityGuidedSteps
+  },
+  rf6: {
+    title:'Guided practice: plan your first project',
+    intro:'Build a feasible proposal one part at a time: question, objectives, evidence plan and milestones. These are planning notes, not claims of completed research.',
+    recapTitle:'Your first research project outline',
+    steps:projectGuidedSteps
   }
 };
