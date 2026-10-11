@@ -1,4 +1,4 @@
-# Research Hub AI — Web-ready prototype (v0.1.4)
+# Research Hub AI — Web-ready prototype (v0.1.5)
 
 **Free. Offline-first. Private by default. No paid APIs or mandatory accounts.**
 
@@ -90,3 +90,8 @@ Original application source code: Apache License 2.0. The official service remai
 ### Lesson 2 — Methods in practice (v0.1.4)
 
 Lesson 2 now teaches qualitative, quantitative, and mixed-methods research in depth, using one AI-and-learning topic across all three approaches. Its four-part offline exercise saves the learner's own questions, proposed evidence, integration plan, and justified method selection to the existing local lesson-note record. It uses the same teaching interface as Lesson 1 and does not replace past work or require paid AI. The updated six-question quiz is formative; past two-question attempts are kept in history but no longer count as a pass for the revised assessment.
+
+
+### Lesson 3 — Source-grounded evidence literacy (v0.1.5)
+
+Lesson 3 now teaches how to form answerable research questions, distinguish claims and evidence, evaluate primary and secondary sources in context, verify publication details and treat peer review and AI-generated citations with appropriate caution. A four-step guided practice tool locally saves the user's focused question, claim-and-evidence reasoning, source-checking plan and cautious conclusion. **The learning guide does not check publications online or certify sources as verified**; users should confirm original documents independently. New notes are compatible with the existing ZIP backup format and all previous research data remain local.
