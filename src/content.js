@@ -445,7 +445,7 @@ export const lessons=[
       {title:'5. Evaluate analysis and uncertainty',paragraphs:[
         'In quantitative work, inspect numerical summaries, chosen comparisons, missing data, uncertainty and whether the reported calculations match the design. A statistically significant result does not necessarily mean a large or educationally important effect.',
         'In qualitative work, inspect how codes, categories or themes were developed, whether examples support the interpretation and whether the researchers considered contradictory accounts. Counting quotes alone does not establish how prevalent an experience is.',
-        'Associations and before-after comparisons do not automatically establish cause and effect. Strong causal claims need designs, measurements and assumptions suitable for causal inference.'
+        'Associations and before-after comparisons do not automatically establish causation (cause and effect). Causation is a stronger claim than correlation; strong causal claims need designs, measurements and assumptions suitable for causal inference.'
       ]},
       {title:'6. Compare findings with limitations and reporting',paragraphs:[
         'Check whether the discussion answers the original question or stretches beyond the collected evidence. A study of volunteers from one campus cannot automatically tell us what students everywhere experience.',
