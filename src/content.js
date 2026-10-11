@@ -290,10 +290,109 @@ export const lessons=[
       {q:'Which research note is most useful for future verification?',options:['“The source is good because many people shared it.”','Full source details, relevant findings, methods, limitations and a clearly labelled personal interpretation','Only a title with no way to locate or check the source'],correct:1,why:'Traceable bibliographic details, a precise evidence summary and separate inference make claims easier to verify.'}
     ]
   },
-  {id:'rf4',title:'Ethics and responsible research',minutes:15,skill:'Research ethics awareness',glossary:[['Informed consent','Voluntary agreement based on sufficient information.'],['Confidentiality','Appropriate protection of information from unauthorised disclosure.'],['Conflict of interest','A circumstance that might compromise or appear to compromise impartiality.']],objectives:['Recognise basic ethics responsibilities.','Identify when institutional guidance may be required.'],paragraphs:[
-    'Research involving people may require ethics approval before recruitment or data collection. Researchers should consider consent, potential harm, fairness, confidentiality, data protection and participants’ right to withdraw where applicable.',
-    'This educational app cannot issue ethics approval. Do not put identifiable participant records, sensitive interviews or protected health information into this early local prototype. University or organisational requirements take priority.'
-  ],example:'Before interviewing students about stressful experiences, check approval requirements, prepare accessible participant information, consider emotional risks and plan secure data storage.',practice:'Write two possible harms and two mitigations for a hypothetical participant interview.',quiz:[{q:'When should a study seek required ethics approval?',options:['After all interviews are complete','Before relevant participant recruitment or data collection','Only if results will be published'],correct:1,why:'Institutional requirements often mandate approval before participant recruitment or collection.'},{q:'Does Research Hub AI provide formal ethics approval?',options:['Yes, by completing a quiz','No, consult the responsible institution or review board','Yes, when offline'],correct:1,why:'A teaching tool cannot replace institutional ethics review.'}]},
+  {
+    id:'rf4',title:'Ethics and responsible research',minutes:45,skill:'Research ethics awareness',
+    objectives:[
+      'Explain why respect, fairness, minimising harm and research integrity matter.',
+      'Recognise when a project involving people may require review before recruitment or data collection.',
+      'Describe informed consent, confidentiality and the limits of anonymity and withdrawal.',
+      'Identify potential risks to participants, including privacy, power differences and distress.',
+      'Prepare a basic ethics and data-protection plan for a hypothetical research idea.',
+      'Distinguish responsible use of AI assistance from fabrication, plagiarism or unsupported citations.'
+    ],
+    glossary:[
+      ['Research ethics','Principles and review processes that protect participants, communities and the integrity of research.'],
+      ['Informed consent','A voluntary agreement based on understandable information about the activity, its risks and relevant participant rights.'],
+      ['Ethics review','Consideration of an activity by a responsible institution, committee or authority under applicable requirements.'],
+      ['Confidentiality','Protecting information from access or disclosure by unauthorised parties, even when the researcher knows the identity.'],
+      ['Anonymity','A situation where a person cannot reasonably be identified from the collected information; removing names alone may not guarantee this.'],
+      ['Voluntary participation','A choice made without improper pressure, coercion or undue influence.'],
+      ['Risk mitigation','A practical step to reduce the likelihood or severity of a possible harm.'],
+      ['Data minimisation','Collecting and keeping only information genuinely needed for the stated purpose.'],
+      ['Conflict of interest','A personal, professional or financial interest that could compromise or appear to compromise research judgement.'],
+      ['Research integrity','Honesty and accountability in designing, conducting, recording and reporting research.']
+    ],
+    paragraphs:[
+      'Ethics is not merely an approval form. It is the ongoing responsibility to conduct research honestly, protect people, respect their choices and minimise foreseeable harm. Even a well-intended study can cause problems when questions are sensitive, identities are disclosed or participants feel pressured.',
+      'Different universities, institutions, countries, disciplines and kinds of data have different rules. You must consult the responsible ethics office or equivalent authority before starting participant recruitment or data collection when review is required. Research Hub AI teaches the ideas; it cannot grant an exemption or issue ethics approval.',
+      'We will use a hypothetical study of student experiences with AI. These examples are for learning, not permission to recruit classmates. Do not enter identifiable participant records, sensitive interviews, medical information or confidential research data into this prototype or its unencrypted backups.'
+    ],
+    teachingBlocks:[
+      {title:'1. Ask who could be affected',paragraphs:[
+        'Begin by listing who could be affected by the study, not only who answers a survey. Participants, classmates, teachers, institutions and communities may face direct or indirect consequences.',
+        'For an AI-learning study, students may worry that negative comments about an instructor will affect their marks. Their grades and opinions may be sensitive in that setting. Consider whether recruiting through their teacher creates pressure.',
+        'Respect for people includes allowing meaningful choices. Responsible research also considers fair selection, accessibility, cultural context, the likely benefits and burdens, and how findings might be misused.'
+      ]},
+      {title:'2. Understand ethics review before data collection',paragraphs:[
+        'A student project involving interviews, surveys, experiments, observation or use of identifiable personal data may require institutional ethics review or approval before recruitment and collection. The responsible authority decides whether an exemption or expedited process applies; you should not decide that an activity is exempt merely because it seems harmless or is for class.',
+        'If a project has no human participants—for example, a review of already published, public academic articles—the review requirements may differ. Copyright, privacy, licensing and institution-specific rules can still apply.',
+        'Write down the study purpose, recruitment plan, methods, potential harms, data storage arrangements and intended use of findings before asking for guidance.'
+      ]},
+      {title:'3. Explain informed consent plainly',paragraphs:[
+        'An information sheet should say who is conducting the research, what participation involves, approximate time, possible risks, potential benefits, how information will be used and stored, whom to contact, and what choices participants have under the approved protocol.',
+        'A consent form or other authorised process does not make the study ethical by itself. People should understand the information and have a genuine opportunity to decline without inappropriate consequences.',
+        'A participant’s right to withdraw may have limits once data are irreversibly anonymised or combined; explain any such limits accurately rather than promising something that cannot be fulfilled.'
+      ]},
+      {title:'4. Distinguish privacy, confidentiality and anonymity',paragraphs:[
+        'Confidentiality means the research team may know an identity but has controls protecting that information. Anonymity means identities cannot reasonably be linked to responses; an anonymous survey should not quietly collect identifying accounts or device data.',
+        'Names, student numbers, voices, small-group details and combinations of seemingly harmless facts can identify someone. Replacing names with codes is often pseudonymisation, not true anonymisation.',
+        'Plan secure, approved storage, access restrictions, retention periods and careful reporting. A quote about a unique event may identify someone even if no name appears.'
+      ]},
+      {title:'5. Anticipate harm and reduce it',paragraphs:[
+        'Possible harms include embarrassment, distress, a breach of privacy, coercion, discrimination or damage to reputation. Researchers should explain likely risks honestly and identify concrete mitigation steps, such as optional questions, appropriately trained staff, safe referral information and avoiding collection of unnecessary personal details.',
+        'Imagine asking students to reveal suspected academic misconduct involving AI. This could create serious privacy and power issues. Changing the question, recruitment process or study design may be necessary; some projects should not go ahead without specialist oversight.',
+        'Do not describe a study as having “no risk” simply because it is online. Evaluate risks in context, including who can access the data and how results may be reported.'
+      ]},
+      {title:'6. Use sources and AI assistance responsibly',paragraphs:[
+        'Never fabricate participant responses, measurements, ethics approval letters, photographs, methods or citations. Do not change findings to match an expected outcome. Report conflicts of interest, limitations and deviations from the approved plan where required.',
+        'Generative AI can help brainstorm wording or explain concepts, but may invent sources, produce biased summaries or reveal private information if sensitive text is shared. Follow your university’s policies on permitted AI use, disclosure, citation and handling of research material.',
+        'If a tool produced a sentence or suggested a citation, you are still responsible for checking the underlying evidence and truthfully describing your own work.'
+      ]},
+      {title:'7. Ethics continues after approval',paragraphs:[
+        'Treat an approved plan as the starting point for responsible conduct, not a shield against mistakes. Important changes to questions, risks, recruitment or data handling may require an amendment or fresh guidance before implementation.',
+        'Plan what to do if someone asks to withdraw, expresses distress, reports a problem or discovers inaccurate information. Report incidents through the designated institutional processes.',
+        'When writing the final report, protect identities and avoid exaggerating claims about groups who might be harmed by careless generalisation.'
+      ]}
+    ],
+    example:'Hypothetical question: “How do first-year students experience pressure to use AI when preparing assignments?” Ethical planning would consider whether participants might fear being identified, who recruits them, how consent works, who sees raw responses and whether institutional approval is required.',
+    workedExample:{
+      title:'Worked example: planning a hypothetical student interview',
+      steps:[
+        ['Idea','Explore how a specified group experiences AI tools when learning difficult concepts. This is a teaching plan, not an approved live study.'],
+        ['Review route','Ask the responsible university ethics office whether approval or an exemption decision is required before contacting students.'],
+        ['Recruitment','Use a process that minimises pressure; avoid teachers directly recruiting students they grade unless the approved protocol addresses that relationship.'],
+        ['Consent','Explain purpose, questions, time, risks, contact details and realistic withdrawal provisions in language participants understand.'],
+        ['Data plan','Decide what information is truly necessary, who may access it, approved storage, retention and how quotations will be de-identified.'],
+        ['Risks','Identify distress, power imbalance and accidental disclosure; describe specific mitigation and escalation procedures.'],
+        ['Reporting','State what the approved methods and actual evidence support without inventing participants or exposing identifiable stories.']
+      ],
+      takeaway:'Ethical planning follows a study from its question to the treatment of people, information and final reporting; a teaching app cannot approve the plan.'
+    },
+    comparisons:[
+      ['Ethics review','“It is only a class project, so approval cannot be needed.”','Ask the responsible authority what review applies before any covered participant recruitment or data collection.'],
+      ['Consent','“A ticked box means every future use of the data is permitted.”','Explain the approved scope, rights, realistic withdrawal limits and planned handling of information.'],
+      ['Anonymous versus confidential','“We removed names, so no one could possibly be identified.”','Consider identifiers in metadata, recordings and contextual details; apply appropriate controls.'],
+      ['Research integrity','“An AI tool wrote a plausible citation, so I can use it.”','Find and check the real source, and comply with research and academic-integrity policies.']
+    ],
+    practice:'Prepare a hypothetical ethics plan for a study of student use of AI, using the guided exercise. Do not recruit anyone or collect private participant information in this practice.',
+    practicePrompts:[
+      'Risk: Who might be affected, and what harms could occur?',
+      'Review: Who can determine whether the project needs formal approval?',
+      'Consent and privacy: What would participants need to know, and what information should be protected?',
+      'Integrity: How will you use evidence and AI assistance honestly?'
+    ],
+    reflectionPrompt:'In your own words, explain how consent, confidentiality, ethics review and research honesty connect. Which part of the ethical planning process would you need guidance on before a real study?',
+    quiz:[
+      {q:'You want to interview classmates about potentially sensitive AI use. What should you do before recruitment?',options:['Collect interviews first and seek approval afterward','Ask the responsible institution whether review or approval is required and prepare an ethical plan','Assume the project is exempt because participants are classmates'],correct:1,why:'Applicable institutional ethics requirements must be checked before covered recruitment or data collection. The app cannot determine exemptions.'},
+      {q:'A survey removes names but keeps student numbers. Which description is most accurate?',options:['It may be confidential or pseudonymised, but it is not genuinely anonymous','It is necessarily anonymous because names are absent','It can be published without privacy checks'],correct:0,why:'Student numbers can identify participants. Removing names alone does not guarantee anonymity.'},
+      {q:'What should a good participant information sheet explain?',options:['Only the hoped-for benefits','That participation is compulsory for anyone in the same class','Study activities, risks, handling of information, choices and relevant contact details'],correct:2,why:'Informed consent needs understandable information and a genuinely voluntary choice under the relevant approved process.'},
+      {q:'A lecturer asks their students to join a study they will also grade. What is an important ethical concern?',options:['There is never any ethical problem','Students may feel pressured because of the lecturer’s authority, so recruitment requires careful planning','The lecturer can freely access every answer without a protocol'],correct:1,why:'Power differences may undermine genuinely voluntary participation even when no pressure is intended.'},
+      {q:'Which action is responsible if an AI assistant suggests a convincing-looking research citation?',options:['Locate and verify the source and follow disclosure rules','Present the citation as confirmed because the tool sounded certain','Invent a DOI if the suggested one does not resolve'],correct:0,why:'AI outputs can contain nonexistent or inaccurate sources. Researchers must verify citations and follow institutional AI policies.'},
+      {q:'An approved study changes its questions to cover a more sensitive topic. What is the appropriate approach?',options:['Change the questions silently to save time','Ignore the original approval conditions','Check whether an ethics amendment or new guidance is needed before introducing the change'],correct:2,why:'Changes to risks, procedures or data handling may require review or approval before implementation.'},
+      {q:'What is a realistic explanation of participant withdrawal?',options:['Participants can always remove their answers from every published analysis forever','Explain the withdrawal process and any genuine limits once information has been irreversibly anonymised or combined','Do not mention withdrawal unless participants ask'],correct:1,why:'Participant information must accurately describe what can and cannot be withdrawn under the approved protocol.'},
+      {q:'What should you do with confidential participant interviews in this early version of Research Hub AI?',options:['Store them in an unencrypted browser backup because the app is free','Upload them to a public GitHub repository','Use institution-approved systems instead; this prototype is not designed for sensitive identifiable data'],correct:2,why:'This prototype and its ZIP backups are not approved storage for identifiable or sensitive participant records.'}
+    ]
+  },
   {id:'rf5',title:'How to evaluate research quality',minutes:14,skill:'Critical appraisal',glossary:[['Bias','A systematic influence that may distort results or interpretation.'],['Limitation','A constraint on what can reasonably be concluded.'],['Reproducibility','The ability to obtain consistent results using documented procedures and materials, as applicable.']],objectives:['Identify limitations and avoid overclaiming.','Understand reproducibility and transparent reporting.'],paragraphs:[
     'A useful research report explains the question, study design, sampling, procedures, analysis and limitations. A large sample is not automatically representative, and an association does not by itself prove causation.',
     'Transparent documentation makes research easier to evaluate and, where appropriate, reproduce. Methods should describe what was actually done, and reports should never invent participants, measurements or citations.'
