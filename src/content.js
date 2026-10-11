@@ -502,10 +502,124 @@ export const lessons=[
       {q:'What is an appropriate concluding statement after a limited one-campus volunteer survey?',options:['The surveyed participants reported a pattern, with limits on generalising beyond that group','The pattern must apply to every university and every year','Every participant’s feelings prove an AI intervention caused academic improvement'],correct:0,why:'A sound conclusion describes the actual evidence and acknowledges sampling, measurement and interpretation limits.'}
     ]
   },
-  {id:'rf6',title:'From learning to a first project',minutes:16,skill:'Research planning',glossary:[['Feasibility','Whether a study is practical given time, access, resources and ethics.'],['Research objective','A concrete goal a study aims to achieve.'],['Research design','The overall plan connecting questions, evidence and analysis.']],objectives:['Describe the stages of a research project.','Draft a focused, feasible starting question.'],paragraphs:[
-    'A useful starting workflow is: identify a problem, review existing knowledge, refine questions, choose methods, review ethical requirements, gather data, analyse it and communicate findings. The process is iterative; evidence may cause you to revise an earlier decision.',
-    'Start small. Choose an interesting question that is answerable with resources and access you actually have. Record uncertainties honestly and ask a supervisor or ethics office when the situation requires specialist approval.'
-  ],example:'Interest: rural education. Possible early question: “What barriers to attending optional online tutoring are reported by students at [defined institution] during [defined period]?” This is still a draft requiring literature review and feasibility checks.',practice:'Draft a tentative research topic and question, then save them in My Research. It is acceptable to revise them later.',quiz:[{q:'What should normally guide the choice of methodology?',options:['The researcher’s favourite software','The research question, evidence needs and ethics','The cheapest tool alone'],correct:1,why:'Research design must fit the question and relevant constraints.'},{q:'What if early evidence challenges your starting assumption?',options:['Hide the evidence','Re-examine and revise the question or interpretation','Invent supporting results'],correct:1,why:'Responsible research responds to evidence rather than protecting a preferred conclusion.'}]}
+  {
+    id:'rf6',title:'From learning to a first project',minutes:50,skill:'Research planning',
+    objectives:[
+      'Turn a broad interest into a focused, ethical and feasible research question.',
+      'Describe how literature review, objectives, methods, evidence, analysis and reporting connect.',
+      'Choose a beginner-friendly project scope and explain why the chosen method fits.',
+      'Prepare a basic timeline, resource plan, risks and a data-management approach.',
+      'Understand the role of feedback, documentation, revision and honest citations.',
+      'Write a first research proposal outline and identify what still needs supervisor or ethics approval.'
+    ],
+    glossary:[
+      ['Research problem','An issue, uncertainty or gap in knowledge worth investigating.'],
+      ['Research objective','A specific result or task the study aims to accomplish, aligned with its question.'],
+      ['Research scope','The boundaries of what the study will and will not examine.'],
+      ['Feasibility','Whether the study is practical given time, access, skills, resources and applicable approvals.'],
+      ['Literature review','A structured consideration and synthesis of existing relevant work, not simply a list of summaries.'],
+      ['Research design','A plan linking the question to evidence, sampling or materials, methods of analysis and interpretation.'],
+      ['Milestone','An observable checkpoint that helps monitor progress toward a project deliverable.'],
+      ['Data management plan','A description of how research materials will be obtained, organised, protected, backed up and retained.'],
+      ['Pilot','A small preliminary check to improve procedures, when appropriate and permitted under the relevant approval process.'],
+      ['Research proposal','A document explaining a planned question, rationale, approach, ethics, feasibility and intended outputs.'],
+      ['Limitations','Boundaries on what conclusions or applications the eventual evidence can support.'],
+      ['Research integrity','Truthful and transparent conduct, documentation, analysis, citation and reporting.']
+    ],
+    paragraphs:[
+      'You now have the foundation for asking research questions, comparing methods, evaluating evidence and recognising ethical limits. The next step is to connect these ideas into a plan for one small research project. A useful project is not the largest possible topic; it is a clear, practical question that can be investigated responsibly.',
+      'Research is not always a straight line. A literature review may reveal a better question, a feasibility check may require a smaller scope, or initial evidence may challenge your expectation. Revision is part of responsible planning, not a failure.',
+      'This lesson shows how to move from a broad idea about AI and learning to a beginner-friendly, literature-based project outline. The example is a fictional teaching proposal; it does not pretend to contain real research findings or formal ethics approval.'
+    ],
+    teachingBlocks:[
+      {title:'1. Start with a problem, not a predetermined answer',paragraphs:[
+        'Consider your interest: “Is AI good or bad for learning?” This asks too much at once. A researchable starting problem might be that students use AI study assistance in different ways, but you do not yet know what published research says about their reported understanding and measured learning outcomes.',
+        'Define the group, setting, tool or learning outcome only as precisely as the evidence and scope allow. Avoid writing a question that assumes AI is harmful or helpful before reviewing evidence.',
+        'Write down why the question matters and who might benefit from a careful answer. A genuine research problem includes uncertainty to investigate, not just an opinion to defend.'
+      ]},
+      {title:'2. Use the literature to refine the question',paragraphs:[
+        'Before collecting new information from people, look for relevant, traceable academic sources. Record what different studies actually examined, how they defined outcomes and where findings agree or differ.',
+        'A literature review synthesises patterns, strengths, limits and gaps. It does not need to praise every paper or invent a research gap that has not been checked.',
+        'If access is limited, a modest review of a clearly defined set of available studies may be an appropriate learning exercise. Do not call a review “systematic” unless its searching, selection and appraisal actually meet the relevant methodological requirements.'
+      ]},
+      {title:'3. Connect one question to realistic objectives',paragraphs:[
+        'A research question asks what you want to understand. Objectives state manageable activities that will help answer it. For a literature-based AI-learning project, objectives could include defining learning outcomes, identifying relevant studies, comparing their methods and summarising limitations.',
+        'Keep objectives aligned with the question. A review of published articles cannot honestly claim it experimentally measured the effect of AI on students at your institution.',
+        'A useful scope statement also says what the study excludes: for example, it will not recruit participants, access student grades or evaluate every AI application worldwide.'
+      ]},
+      {title:'4. Select an approach that answers the question',paragraphs:[
+        'Choose an appropriate study type: a small literature-based analysis, a qualitative study, a quantitative study or an intentionally integrated mixed-methods design. Each demands suitable evidence, expertise and procedures.',
+        'For a first independent project without participant access or ethics approval, a literature-based starting task may be the most practical. It still requires a transparent search strategy, critical appraisal, truthful quotations and careful interpretation.',
+        'If you plan interviews, surveys, experiments or use of non-public data, consult the responsible supervisor and ethics authority before starting covered recruitment or collection. This app cannot decide that your project is exempt.'
+      ]},
+      {title:'5. Map the evidence and analysis before collecting it',paragraphs:[
+        'For every objective, write what information will be needed, where it could come from and how you will analyse it. A simple planning table might say: “Identify how studies measure learning”; “Relevant published methods sections”; “Compare measurement definitions and limitations.”',
+        'Decide how you will keep source records, citations and your own observations separate. If analysing numbers, choose valid calculations for the data. If analysing text, explain how you will identify and compare patterns.',
+        'Do not collect more personal information than necessary, and never fabricate measurements or claim a paper supports something you did not verify.'
+      ]},
+      {title:'6. Check feasibility, ethics and data safety',paragraphs:[
+        'Ask whether you have enough time, access to credible sources, required skills, suitable equipment and—if relevant—approval. If a plan cannot be completed responsibly, shrink the question or choose a different approach.',
+        'List practical risks: insufficient suitable studies, difficulty accessing articles, excessive scope, misunderstood methods, loss of files or delays in review. Pair each with a reasonable mitigation and clear decision point.',
+        'Keep regular backups of non-sensitive project notes. Research Hub AI stores data locally in the browser, and its downloadable ZIP backups are not encrypted. Never place identifiable participant records or confidential information in this prototype or public GitHub.'
+      ]},
+      {title:'7. Set milestones and keep an honest research log',paragraphs:[
+        'Break work into manageable stages: refine question, identify sources, assess relevance, outline methodology, analyse evidence, draft discussion and review the final report. A milestone should show a tangible result, not just time spent.',
+        'Record why your question, search terms, exclusions or approach changed. Save dates and source details so you can reconstruct the work accurately. Ask for feedback before making important decisions.',
+        'A schedule is a planning aid, not a guarantee. Leave time to handle missing sources, learn an unfamiliar technique and revise writing after criticism.'
+      ]},
+      {title:'8. Write and communicate only supported conclusions',paragraphs:[
+        'A basic report explains the problem, question, existing literature, methods, findings, discussion and limitations. An early proposal describes what you plan to do; it should not report imagined results as though a study has been performed.',
+        'Clearly distinguish evidence from inference. If existing studies disagree, explain possible differences in questions, samples, measurements and context instead of forcing agreement.',
+        'Follow applicable academic-integrity and AI-use policies. Give accurate citations, acknowledge collaborators where required and describe any AI assistance transparently if your institution requires disclosure.'
+      ]},
+      {title:'9. Review the six Foundation lessons together',paragraphs:[
+        'You began by learning what research is (Lesson 1), how research approaches differ (Lesson 2), how to evaluate questions and sources (Lesson 3), how to conduct research ethically (Lesson 4), and how to appraise research quality (Lesson 5). This final lesson joins those ideas into a usable plan.',
+        'A multiple-choice pass shows success on a knowledge check, not professional competence or an accredited qualification. Your reflections, revisions and practice exercises matter even when an assessment is unfinished.',
+        'Return to any previous lesson whenever you need it. You can create a project in My Research and gradually develop its title, question and notes without pretending to have completed a real study.'
+      ]}
+    ],
+    example:'Broad topic: “AI and student learning.” A possible first project: “How do selected published studies define and evaluate generative AI’s role in university students’ understanding, and what limitations affect their conclusions?” This is a draft question to refine after searching the literature, not an assertion that a gap exists.',
+    workedExample:{
+      title:'Worked example: your first small literature-based research plan',
+      steps:[
+        ['Working title','How selected published studies assess AI-assisted learning among university students.'],
+        ['Problem','Generative AI is used for study, but claims about improved understanding may rely on different measures and research designs.'],
+        ['Tentative question','What outcomes and methods do selected eligible studies use to assess AI-supported learning, and what do their limitations imply?'],
+        ['Objectives','Identify relevant studies; record measures of learning; compare study designs and findings; describe uncertainties and evidence gaps.'],
+        ['Method','Define a modest literature search using explicit inclusion criteria, record exact sources, critically appraise each, and organise a transparent narrative comparison. Do not claim it is a full systematic review.'],
+        ['Ethics and privacy','Use appropriately accessed published literature. Ask for institutional guidance on applicable requirements; do not collect participant data or upload restricted materials to this app.'],
+        ['Milestones','Agree on a question; build a source log; outline comparisons; draft synthesis; revise with feedback; prepare a clear report.'],
+        ['Possible limitation','Source selection and access may omit relevant studies; measures may differ too much for direct comparison; outcomes from one setting may not generalise.'],
+        ['Next action','Create a project entry in My Research, save the tentative question and list what must be verified with real sources.']
+      ],
+      takeaway:'A good first plan matches its question, available evidence, analysis, resources and ethical constraints. It remains a proposal until evidence is actually collected and evaluated.'
+    },
+    comparisons:[
+      ['Scope','“I will determine whether every AI tool helps every learner.”','Narrow to a defined question and available types of evidence that can be evaluated.'],
+      ['Objectives','“I will prove AI is useful.”','State neutral activities that can answer the question regardless of the result.'],
+      ['Evidence plan','“I will cite whatever an AI assistant suggests.”','Search for traceable original publications and record what each actually reports.'],
+      ['Project status','“My proposal contains a convincing conclusion, so I have completed research.”','Distinguish proposed methods from actual findings; report only work that was really done.']
+    ],
+    practice:'Plan a small research project inspired by your AI-and-learning curiosity. Use the four guided steps, then put a tentative project title and research question in My Research when ready. No participant recruitment is needed for the exercise.',
+    practicePrompts:[
+      'Focus: What is one clearly answerable question or problem?',
+      'Objectives: Which two or three tasks would help answer it?',
+      'Evidence and methods: What real sources, data and analysis would be needed?',
+      'Feasibility and reporting: What permissions, risks, milestones and limits apply?'
+    ],
+    reflectionPrompt:'Describe your first realistic research project in your own words, including the question, approach, planned evidence, ethics and one limitation. Which of the six lessons do you want to revisit before doing a real study?',
+    quiz:[
+      {q:'You want to study whether AI helps all students everywhere. What is the best first planning step?',options:['Promise a universal answer','Narrow the population, outcome and context into a feasible research question','Decide the result before choosing evidence'],correct:1,why:'A focused question with appropriate scope helps select evidence and a feasible design without assuming the answer.'},
+      {q:'Which objective fits a literature-based study about AI and learning?',options:['Compare how selected published studies measure learning outcomes','Recruit participants without required approvals','Claim to have run experiments that have not occurred'],correct:0,why:'A literature-based project can accurately compare methods, findings and limitations in traceable published studies.'},
+      {q:'What makes a research plan feasible?',options:['It uses the most advanced software regardless of resources','It requires an unlimited sample without access','It fits available time, evidence, skills, resources and applicable ethics requirements'],correct:2,why:'Feasibility depends on practical access, skills, time, methods and required approval, not grand ambitions.'},
+      {q:'A source review found studies using different learning measures. What should you do?',options:['Pretend the results all measure exactly the same outcome','Compare measurement definitions and explain the limits of direct comparison','Remove every paper that conflicts with your preferred answer'],correct:1,why:'A trustworthy synthesis evaluates how studies define outcomes and whether comparisons are meaningful.'},
+      {q:'Which is a project milestone?',options:['A reviewed source log containing eligible studies with full citation details','“Work hard on research eventually”','A conclusion written before the research is done'],correct:0,why:'A milestone is a verifiable intermediate output that makes progress and review possible.'},
+      {q:'When a project involves participant interviews, what should guide the start of recruitment?',options:['The date you first thought of the topic','The app showing a completed lesson','The responsible institution’s ethics decision and approved recruitment plan, when required'],correct:2,why:'Learning about ethics is not permission to recruit. Applicable review and approval must be addressed first.'},
+      {q:'What is an honest response when your original hypothesis is not supported by the evidence?',options:['Rewrite the records to preserve the hypothesis','Report the actual evidence and reassess your interpretation or question','Invent additional supportive citations'],correct:1,why:'Research integrity requires transparent reporting and revising interpretations when warranted.'},
+      {q:'What does passing all six Foundation quizzes establish?',options:['A non-accredited record that you passed six knowledge checks; practice and further learning are still needed','Official university accreditation as an expert researcher','Permission to bypass ethics review in future studies'],correct:0,why:'The Skills Passport records formative knowledge checks, not accredited competency or authority to conduct regulated research.'}
+    ]
+  }
+
 ];
 export const mentorTopics={
   question:{label:'Formulating a question',keys:['question','topic','objective','hypothesis','problem'],teach:'A research question identifies what you want to investigate. A focused question often specifies the phenomenon, population or setting, and what kind of answer you seek.',guide:'Begin by stating the issue. Then identify who or what you will study, what data you can access, and what is feasible. Draft a question and inspect its scope.',assist:'Open My Research, select a project and add a draft question. Your question is saved locally; it is not automatically validated as original.',tip:'Explain why: A clear question helps align the literature search, methods and analysis.'},
