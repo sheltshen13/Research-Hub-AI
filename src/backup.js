@@ -49,7 +49,7 @@ export function unpackZip(bytes){
 }
 export async function sha256(bytes){const bytesHash=new Uint8Array(await crypto.subtle.digest('SHA-256',bytes));return [...bytesHash].map(x=>x.toString(16).padStart(2,'0')).join('');}
 export async function createBackup(records){
-  const data={schemaVersion:1,appVersion:'0.1.4',exportedAt:new Date().toISOString(),records};
+  const data={schemaVersion:1,appVersion:'0.1.5',exportedAt:new Date().toISOString(),records};
   const body=encoder.encode(JSON.stringify(data));
   const manifest={format:'research-hub-ai-backup',schemaVersion:1,dataFile:'data.json',sha256:await sha256(body),recordCount:records.length,exportedAt:data.exportedAt,encrypted:false};
   return packZip({'manifest.json':JSON.stringify(manifest,null,2),'data.json':body});
@@ -71,7 +71,7 @@ export async function inspectBackup(bytes){
     if(r.type==='project'&&(typeof r.title!=='string'||r.title.length>140))throw new Error('Backup contains a malformed project.');
     if(r.type==='attempt'&&(!Array.isArray(r.answers)||typeof r.lessonId!=='string'))throw new Error('Backup contains malformed lesson results.');
     if(r.type==='lesson-note'&&(typeof r.lessonId!=='string'||r.lessonId.length>60||typeof r.practice!=='string'||r.practice.length>8000||typeof r.reflection!=='string'||r.reflection.length>8000))throw new Error('Backup contains malformed lesson notes.');
-    if(r.type==='lesson-note'){for(const field of ['guide_observation','guide_question','guide_evidence','guide_limitation','method_qual','method_quant','method_mixed','method_choice']) if(Object.hasOwn(r,field)&&(typeof r[field]!=='string'||r[field].length>3000))throw new Error('Backup contains malformed guided practice.');}
+    if(r.type==='lesson-note'){for(const field of ['guide_observation','guide_question','guide_evidence','guide_limitation','method_qual','method_quant','method_mixed','method_choice','evidence_question','evidence_claim','evidence_source','evidence_limit']) if(Object.hasOwn(r,field)&&(typeof r[field]!=='string'||r[field].length>3000))throw new Error('Backup contains malformed guided practice.');}
   }
   return {records:body.records,exportedAt:body.exportedAt,count:body.records.length,projectCount:body.records.filter(x=>x.type==='project').length};
 }

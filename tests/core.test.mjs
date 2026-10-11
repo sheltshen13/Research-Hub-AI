@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {parseNumbers,summarize} from '../src/stats.js';
 import {packZip,unpackZip,createBackup,inspectBackup,crc32} from '../src/backup.js';
 import {lessons,matchMentorTopic} from '../src/content.js';
-import {introGuidedSteps,guidedKeys,methodsGuidedSteps,guidedLessons} from '../src/guided.js';
+import {introGuidedSteps,guidedKeys,methodsGuidedSteps,evidenceGuidedSteps,guidedLessons} from '../src/guided.js';
 import {execFileSync} from 'node:child_process';
 import {readFile} from 'node:fs/promises';
 
@@ -17,9 +17,10 @@ test('single observation has no sample standard deviation',()=>{const x=summariz
 test('number parsing rejects malformed input',()=>{assert.deepEqual(parseNumbers(' 1,2\n3;4 '),[1,2,3,4]);assert.throws(()=>parseNumbers('1,abc,3'),/numbers only/);assert.throws(()=>parseNumbers(''),/one number/);});
 test('offline academy has exactly six full lessons with valid quizzes',()=>{
  assert.equal(lessons.length,6);
- for(const l of lessons){assert.ok(l.paragraphs.length>=2);assert.ok(l.glossary.length>=2);assert.equal(l.quiz.length,l.id==='rf1'?5:l.id==='rf2'?6:2);for(const q of l.quiz)assert.ok(q.correct>=0&&q.correct<q.options.length);} 
+ for(const l of lessons){assert.ok(l.paragraphs.length>=2);assert.ok(l.glossary.length>=2);assert.equal(l.quiz.length,l.id==='rf1'?5:l.id==='rf2'?6:l.id==='rf3'?7:2);for(const q of l.quiz)assert.ok(q.correct>=0&&q.correct<q.options.length);} 
  const intro=lessons.find(l=>l.id==='rf1'); assert.ok(intro.teachingBlocks.length>=6);assert.ok(intro.workedExample.steps.length>=6);assert.ok(intro.comparisons.length>=3);assert.ok(intro.practicePrompts.length>=3);assert.ok(intro.reflectionPrompt);
  const methods=lessons.find(l=>l.id==='rf2');assert.ok(methods.minutes>=35);assert.ok(methods.teachingBlocks.length>=6);assert.ok(methods.workedExample.steps.length>=5);assert.ok(methods.comparisons.length>=3);assert.ok(methods.glossary.length>=6);assert.ok(methods.reflectionPrompt);
+ const evidence=lessons.find(l=>l.id==='rf3');assert.ok(evidence.minutes>=40);assert.ok(evidence.teachingBlocks.length>=7);assert.ok(evidence.workedExample.steps.length>=5);assert.ok(evidence.comparisons.length>=4);assert.ok(evidence.glossary.length>=9);assert.ok(evidence.reflectionPrompt);
 });
 test('mentor topic routing is explicit, not a fabricated AI answer',()=>{
  assert.equal(matchMentorTopic('How do I analyse my data?'),'analysis');
@@ -172,4 +173,70 @@ test('method guide reuses existing navigation, autosave and honest assessment hi
  assert.ok(app.includes('Previous question wording and choices have changed.'));
  assert.ok(app.includes("x.answers.length===l.quiz.length"));
  assert.ok(app.includes('renderGuidedSummary(root)'));
+});
+
+
+test('Lesson 3 evidence literacy is detailed and clearly distinguishes fact from fiction',()=>{
+ const l=lessons.find(x=>x.id==='rf3');
+ assert.equal(l.quiz.length,7);
+ assert.ok(l.paragraphs.some(x=>/illustrative|invented|fictional/i.test(x)));
+ assert.ok(l.workedExample.steps[0][1].includes('fictional'));
+ assert.ok(l.teachingBlocks.some(x=>/primary/i.test(x.title)||x.paragraphs.some(p=>/primary/i.test(p))));
+ assert.ok(l.teachingBlocks.some(x=>x.paragraphs.some(p=>/peer review/i.test(p))));
+ assert.ok(l.teachingBlocks.some(x=>x.paragraphs.some(p=>/DOI/i.test(p))));
+ assert.ok(l.teachingBlocks.some(x=>x.paragraphs.some(p=>/causation/i.test(p))));
+ assert.ok(l.quiz.some(q=>/original source|original evidence|original publication/i.test(q.why)));
+ assert.ok(l.quiz.some(q=>/systematic review/i.test(q.why)));
+ assert.ok(l.quiz.some(q=>/peer review/i.test(q.why)));
+ assert.ok(l.quiz.some(q=>/causation/i.test(q.why)));
+ assert.equal(new Set(l.quiz.map(q=>q.correct)).size,3);
+});
+
+test('guided evidence exercises are distinct and give useful answers and feedback',()=>{
+ assert.equal(guidedLessons.rf3.steps,evidenceGuidedSteps);
+ assert.deepEqual(evidenceGuidedSteps.map(x=>x.key),['evidence_question','evidence_claim','evidence_source','evidence_limit']);
+ for(const step of evidenceGuidedSteps){
+  assert.ok(step.simple.length>70);
+  assert.ok(step.example.length>60);
+  assert.ok(step.prompt.length>40);
+  assert.ok(step.hint.length>45);
+  assert.ok(step.check.options.length>=3);
+  assert.ok(Number.isInteger(step.check.correct));
+  assert.ok(step.check.correct>=0&&step.check.correct<step.check.options.length);
+  assert.ok(step.check.explanation.length>70);
+ }
+});
+
+test('Lesson 3 autosaved answers and historic quizzes survive a verified backup',async()=>{
+ const records=[
+  {id:'profile',type:'profile',name:'Researcher 01'},
+  {id:'lesson-note:rf1',type:'lesson-note',lessonId:'rf1',practice:'Earlier AI research idea',reflection:'Still learning',confidence:'practising',guide_question:'What do students think of AI?'},
+  {id:'lesson-note:rf2',type:'lesson-note',lessonId:'rf2',practice:'Qualitative and quantitative',reflection:'Need more practice',method_choice:'Qualitative interviews may explain reported experiences.'},
+  {id:'quiz-old-rf3',type:'attempt',lessonId:'rf3',score:2,answers:[1,1],createdAt:'2026-10-10T00:00:00Z'},
+  {id:'lesson-note:rf3',type:'lesson-note',lessonId:'rf3',practice:'Check whether AI helps students',reflection:'Sources must be traceable',confidence:'practising',
+   evidence_question:'How do students perceive AI explanations?',
+   evidence_claim:'Some students report AI feels helpful, but learning is not measured.',
+   evidence_source:'Look for original journal article, methods, identifiers and corrections.',
+   evidence_limit:'Responses do not prove learning gains or causation.'}
+ ];
+ const result=await inspectBackup(await createBackup(records));
+ assert.deepEqual(result.records,records);
+});
+
+test('Lesson 3 guided answers must be valid text and within the 3000-character limit',async()=>{
+ for(const key of ['evidence_question','evidence_claim','evidence_source','evidence_limit']){
+  for(const invalid of [12,'x'.repeat(3001)]){
+    const item={id:'lesson-note:rf3',type:'lesson-note',lessonId:'rf3',practice:'',reflection:'',[key]:invalid};
+    await assert.rejects(inspectBackup(await createBackup([item])),/malformed guided practice/);
+  }
+ }
+});
+
+test('Lesson 3 app reuses the safe, source-independent guided interface',async()=>{
+ const app=await readFile(new URL('../src/app.js',import.meta.url),'utf8');
+ assert.ok(app.includes("guidedPracticeView(saved,noteId,l.id)"));
+ assert.ok(app.includes("guidedLessons[root.dataset.guidedLesson]"));
+ assert.ok(app.includes("field.startsWith('evidence_')"));
+ assert.ok(app.includes("x.answers.length===l.quiz.length"));
+ assert.ok(app.includes('Previous question wording and choices have changed.'));
 });

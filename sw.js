@@ -1,4 +1,4 @@
-const CACHE='research-hub-ai-0.1.4-core';
+const CACHE='research-hub-ai-0.1.5-core';
 const APP=['./','index.html','styles.css','src/app.js','src/data.js','src/content.js','src/guided.js','src/stats.js','src/backup.js','manifest.webmanifest','icons/icon.svg','icons/icon-192.png','icons/icon-512.png'];
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(APP.map(path=>new URL(path,self.registration.scope).href))).then(()=>self.skipWaiting()));
