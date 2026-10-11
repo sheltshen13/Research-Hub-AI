@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.5 — Questions, Evidence and Sources
+
+- Expand Lesson 3 with seven beginner-friendly stages, a worked evidence-checking example, an eleven-term glossary, comparisons and seven scenario-based assessment questions.
+- Introduce a four-step offline practice guide for refining a question, separating claim from evidence, checking a source and acknowledging limits.
+- Emphasise that original research, systematic reviews, peer review and AI-generated citations require careful verification, not automatic trust.
+- Preserve old Lesson 3 assessment attempts and existing practice entries; add new notes to local storage and verified ZIP backups using the existing schema.
+- Bump the offline app cache and automatic regression suite. No new payment, API or account requirements.
+
+
 ## 0.1.4 — Understanding research methodologies
 
 - Rebuilt Lesson 2 with detailed beginner explanations, comparative cases, glossary, ethical decision guidance and six scenario-based questions.
