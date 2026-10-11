@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.0 — Complete Research Fundamentals course
+
+- Completed all six Foundation-level lessons. Lessons 4, 5 and 6 now match the depth of Lessons 1–3 with 45–50-minute teaching guides, worked cases, critical comparisons, expanded glossary and eight applied knowledge-check questions each.
+- Lesson 4 teaches responsible research: ethics review, consent, confidentiality, participant risk, data protection and honesty about AI-generated claims.
+- Lesson 5 teaches critical appraisal: sampling, selection and measurement bias, reliability versus validity, uncertainty, causation and transparent reporting.
+- Lesson 6 provides an introductory first-project capstone connecting problem, question, literature, research design, objectives, feasibility, evidence planning, milestones, analysis and ethical reporting.
+- Added four locally saved, guided writing exercises per new lesson; all six lessons now have a step-by-step practice experience and reflective notes.
+- Strengthened offline-learning guidance: learners may study any lesson in any order; quizzes are knowledge checks, not accreditation.
+- Preserved all old learning records, project data and historic quiz attempts. Validated ZIP backups continue to include new practice fields under the existing schema.
+- Updated free offline cache and regression tests. No subscription or paid AI API is required.
+
+
 ## 0.1.5 — Questions, Evidence and Sources
 
 - Expand Lesson 3 with seven beginner-friendly stages, a worked evidence-checking example, an eleven-term glossary, comparisons and seven scenario-based assessment questions.
