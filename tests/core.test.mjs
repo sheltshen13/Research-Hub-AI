@@ -302,7 +302,7 @@ test('quality lesson teaches fit, bias, validity, causation and responsible tran
   assert.ok(words.includes(word),'Quality topic missing: '+word);
  }
  assert.deepEqual(qualityGuidedSteps.map(x=>x.key),['quality_design','quality_sampling','quality_bias','quality_conclusion']);
- assert.ok(l.quiz.some(q=>/qualitative/.test(q.why)));
+ assert.ok(l.quiz.some(q=>/qualitative/i.test(q.why)));
  assert.ok(l.quiz.some(q=>/sample|selection bias/.test(q.why)));
 });
 
