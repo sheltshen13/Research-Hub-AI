@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {parseNumbers,summarize} from '../src/stats.js';
 import {packZip,unpackZip,createBackup,inspectBackup,crc32} from '../src/backup.js';
 import {lessons,matchMentorTopic} from '../src/content.js';
-import {introGuidedSteps,guidedKeys,methodsGuidedSteps,evidenceGuidedSteps,guidedLessons} from '../src/guided.js';
+import {introGuidedSteps,guidedKeys,methodsGuidedSteps,evidenceGuidedSteps,ethicsGuidedSteps,qualityGuidedSteps,projectGuidedSteps,guidedLessons} from '../src/guided.js';
 import {execFileSync} from 'node:child_process';
 import {readFile} from 'node:fs/promises';
 
@@ -17,7 +17,7 @@ test('single observation has no sample standard deviation',()=>{const x=summariz
 test('number parsing rejects malformed input',()=>{assert.deepEqual(parseNumbers(' 1,2\n3;4 '),[1,2,3,4]);assert.throws(()=>parseNumbers('1,abc,3'),/numbers only/);assert.throws(()=>parseNumbers(''),/one number/);});
 test('offline academy has exactly six full lessons with valid quizzes',()=>{
  assert.equal(lessons.length,6);
- for(const l of lessons){assert.ok(l.paragraphs.length>=2);assert.ok(l.glossary.length>=2);assert.equal(l.quiz.length,l.id==='rf1'?5:l.id==='rf2'?6:l.id==='rf3'?7:2);for(const q of l.quiz)assert.ok(q.correct>=0&&q.correct<q.options.length);} 
+ for(const l of lessons){assert.ok(l.paragraphs.length>=2);assert.ok(l.glossary.length>=2);assert.equal(l.quiz.length,l.id==='rf1'?5:l.id==='rf2'?6:l.id==='rf3'?7:8);for(const q of l.quiz)assert.ok(q.correct>=0&&q.correct<q.options.length);} 
  const intro=lessons.find(l=>l.id==='rf1'); assert.ok(intro.teachingBlocks.length>=6);assert.ok(intro.workedExample.steps.length>=6);assert.ok(intro.comparisons.length>=3);assert.ok(intro.practicePrompts.length>=3);assert.ok(intro.reflectionPrompt);
  const methods=lessons.find(l=>l.id==='rf2');assert.ok(methods.minutes>=35);assert.ok(methods.teachingBlocks.length>=6);assert.ok(methods.workedExample.steps.length>=5);assert.ok(methods.comparisons.length>=3);assert.ok(methods.glossary.length>=6);assert.ok(methods.reflectionPrompt);
  const evidence=lessons.find(l=>l.id==='rf3');assert.ok(evidence.minutes>=40);assert.ok(evidence.teachingBlocks.length>=7);assert.ok(evidence.workedExample.steps.length>=5);assert.ok(evidence.comparisons.length>=4);assert.ok(evidence.glossary.length>=9);assert.ok(evidence.reflectionPrompt);
@@ -239,4 +239,130 @@ test('Lesson 3 app reuses the safe, source-independent guided interface',async()
  assert.ok(app.includes("field.startsWith('evidence_')"));
  assert.ok(app.includes("x.answers.length===l.quiz.length"));
  assert.ok(app.includes('Previous question wording and choices have changed.'));
+});
+
+
+test('full six-lesson Research Fundamentals course has complete teaching, guided work and assessment',()=>{
+ const expected=['rf1','rf2','rf3','rf4','rf5','rf6'];
+ assert.deepEqual(lessons.map(l=>l.id),expected);
+ const allKeys=[];
+ for(const lesson of lessons){
+  assert.ok(lesson.minutes>=35,'Study estimate too short: '+lesson.id);
+  assert.ok(lesson.paragraphs.length>=3,'Missing substantial introduction: '+lesson.id);
+  assert.ok(lesson.teachingBlocks.length>=6,'Missing detailed teaching sections: '+lesson.id);
+  assert.ok(lesson.teachingBlocks.every(b=>b.title&&b.paragraphs.length>=2),'Missing teaching detail: '+lesson.id);
+  assert.ok(lesson.glossary.length>=6,'Missing key terms: '+lesson.id);
+  assert.ok(lesson.workedExample.steps.length>=5,'Missing worked investigation: '+lesson.id);
+  assert.ok(lesson.comparisons.length>=3,'Missing common-mistake comparison: '+lesson.id);
+  assert.ok(lesson.practicePrompts.length>=3,'Missing practice prompts: '+lesson.id);
+  assert.ok(lesson.reflectionPrompt.length>50,'Missing reflection: '+lesson.id);
+  assert.ok(lesson.objectives.length>=2,'Missing objectives: '+lesson.id);
+  assert.ok(lesson.quiz.length>=5,'Quiz too shallow: '+lesson.id);
+  for(const q of lesson.quiz){
+   assert.ok(q.options.length>=3,'Question options missing: '+lesson.id);
+   assert.ok(Number.isInteger(q.correct) && q.correct>=0 && q.correct<q.options.length,'Invalid correct choice: '+lesson.id);
+   assert.ok(q.why.length>45,'Assessment needs a useful explanation: '+lesson.id);
+  }
+  const guide=guidedLessons[lesson.id];
+  assert.ok(guide,'Missing a guided learning activity: '+lesson.id);
+  assert.equal(guide.steps.length,4,'Expected four beginner stages: '+lesson.id);
+  assert.ok(guide.title&&guide.intro&&guide.recapTitle);
+  for(const st of guide.steps){
+   assert.ok(st.simple.length>=75,'Unclear explanation: '+st.key);
+   assert.ok(st.example.length>=50,'Missing practical example: '+st.key);
+   assert.ok(st.prompt.length>=40,'Missing learner writing prompt: '+st.key);
+   assert.ok(st.hint.length>=35,'Missing help text: '+st.key);
+   assert.equal(st.check.options.length,3,'Mini check should have three options');
+   assert.ok(Number.isInteger(st.check.correct)&&st.check.correct>=0&&st.check.correct<3);
+   assert.ok(st.check.explanation.length>60,'Mini-check feedback too shallow: '+st.key);
+   allKeys.push(st.key);
+  }
+ }
+ assert.equal(allKeys.length,24);
+ assert.equal(new Set(allKeys).size,allKeys.length,'Guided answer fields must be unique across lessons');
+});
+
+test('ethics lesson covers review, consent, privacy, integrity and platform limits',()=>{
+ const l=lessons.find(x=>x.id==='rf4');
+ const words=[...l.paragraphs,...l.teachingBlocks.flatMap(x=>x.paragraphs)].join(' ');
+ for(const word of ['ethics','consent','confidentiality','approval','withdraw','AI','participants']){
+  assert.ok(words.toLowerCase().includes(word.toLowerCase()),'Ethics concept missing: '+word);
+ }
+ assert.ok(/cannot grant an exemption|cannot grant.*ethics approval/i.test(words));
+ assert.ok(/unencrypted/.test(words));
+ assert.deepEqual(ethicsGuidedSteps.map(x=>x.key),['ethics_risk','ethics_consent','ethics_privacy','ethics_integrity']);
+ assert.ok(l.quiz.some(q=>/review|approval/i.test(q.why)));
+ assert.ok(l.quiz.some(q=>/student numbers|anonym/i.test(q.why)));
+});
+
+test('quality lesson teaches fit, bias, validity, causation and responsible transparency',()=>{
+ const l=lessons.find(x=>x.id==='rf5');
+ const words=[...l.paragraphs,...l.teachingBlocks.flatMap(x=>x.paragraphs)].join(' ').toLowerCase();
+ for(const word of ['selection bias','measurement bias','confounding','reliability','validity','causation','reproducibility','replication']){
+  assert.ok(words.includes(word),'Quality topic missing: '+word);
+ }
+ assert.deepEqual(qualityGuidedSteps.map(x=>x.key),['quality_design','quality_sampling','quality_bias','quality_conclusion']);
+ assert.ok(l.quiz.some(q=>/qualitative/.test(q.why)));
+ assert.ok(l.quiz.some(q=>/sample|selection bias/.test(q.why)));
+});
+
+test('first-project capstone connects the whole course without inventing research results',()=>{
+ const l=lessons.find(x=>x.id==='rf6');
+ const words=[...l.paragraphs,...l.teachingBlocks.flatMap(x=>x.paragraphs)].join(' ').toLowerCase();
+ for(const word of ['literature review','research question','objectives','evidence','ethics','milestone','limitations']){
+  assert.ok(words.includes(word),'Project-planning topic missing: '+word);
+ }
+ assert.deepEqual(projectGuidedSteps.map(x=>x.key),['project_question','project_objectives','project_evidence','project_plan']);
+ assert.ok(l.workedExample.steps.some(x=>/ethic/i.test(x[0])));
+ assert.ok(l.quiz.some(q=>/non-accredited|knowledge checks/i.test(q.why)));
+});
+
+test('all six Foundation lesson notes and historical attempts survive old-format ZIP backups',async()=>{
+ const records=[
+  {id:'profile',type:'profile',name:'Researcher 01'},
+  {id:'attempt-legacy',type:'attempt',lessonId:'rf4',score:2,answers:[1,1],createdAt:'2026-10-10T00:00:00.000Z'},
+  ...lessons.map(l=>({
+    id:'lesson-note:'+l.id,type:'lesson-note',lessonId:l.id,practice:'Personal practice for '+l.id,
+    reflection:'Reflection for '+l.id,confidence:'practising',
+    ...Object.fromEntries(guidedLessons[l.id].steps.map(step=>[step.key,'My answer for '+step.title]))
+  }))
+ ];
+ const out=await inspectBackup(await createBackup(records));
+ assert.deepEqual(out.records,records);
+ assert.equal(out.count,8);
+ assert.ok(out.records.some(x=>x.id==='attempt-legacy'));
+});
+
+test('malformed guided writing in each of the new Foundation lessons is rejected safely',async()=>{
+ for(const id of ['rf4','rf5','rf6']){
+  for(const step of guidedLessons[id].steps){
+   for(const invalid of ['x'.repeat(3001),42]){
+    const note={id:'lesson-note:'+id,type:'lesson-note',lessonId:id,practice:'',reflection:'',[step.key]:invalid};
+    await assert.rejects(inspectBackup(await createBackup([note])),/malformed guided practice/);
+   }
+  }
+ }
+});
+
+test('Academy UI has a complete course but does not misrepresent planned subjects or mastery',async()=>{
+ const app=await readFile(new URL('../src/app.js',import.meta.url),'utf8');
+ assert.ok(app.includes("tag('6 complete lessons')"));
+ assert.ok(app.includes('The other')||app.includes('Future Academy subjects'));
+ assert.ok(app.includes('Quiz passed'));
+ assert.ok(!app.includes("tag('Mastered')"));
+ for(const prefix of ['ethics_','quality_','project_']){
+  assert.ok(app.includes("field.startsWith('"+prefix+"')"),'Missing autosave handling: '+prefix);
+ }
+ const sw=await readFile(new URL('../sw.js',import.meta.url),'utf8');
+ assert.ok(sw.includes('research-hub-ai-0.2.0-core'));
+});
+
+test('course teaching materials are independently readable without AI APIs',()=>{
+ const l4=lessons.find(l=>l.id==='rf4');
+ const l5=lessons.find(l=>l.id==='rf5');
+ const l6=lessons.find(l=>l.id==='rf6');
+ assert.ok(l4.paragraphs.some(x=>/cannot grant/i.test(x)));
+ assert.ok(l5.paragraphs.some(x=>/imaginary|teaching illustrations/i.test(x)));
+ assert.ok(l6.paragraphs.some(x=>/fictional teaching proposal/i.test(x)));
+ assert.ok(l6.teachingBlocks.some(x=>/multiple-choice pass/i.test(x.paragraphs.join(' '))));
 });
