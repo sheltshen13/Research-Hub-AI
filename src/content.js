@@ -393,10 +393,115 @@ export const lessons=[
       {q:'What should you do with confidential participant interviews in this early version of Research Hub AI?',options:['Store them in an unencrypted browser backup because the app is free','Upload them to a public GitHub repository','Use institution-approved systems instead; this prototype is not designed for sensitive identifiable data'],correct:2,why:'This prototype and its ZIP backups are not approved storage for identifiable or sensitive participant records.'}
     ]
   },
-  {id:'rf5',title:'How to evaluate research quality',minutes:14,skill:'Critical appraisal',glossary:[['Bias','A systematic influence that may distort results or interpretation.'],['Limitation','A constraint on what can reasonably be concluded.'],['Reproducibility','The ability to obtain consistent results using documented procedures and materials, as applicable.']],objectives:['Identify limitations and avoid overclaiming.','Understand reproducibility and transparent reporting.'],paragraphs:[
-    'A useful research report explains the question, study design, sampling, procedures, analysis and limitations. A large sample is not automatically representative, and an association does not by itself prove causation.',
-    'Transparent documentation makes research easier to evaluate and, where appropriate, reproduce. Methods should describe what was actually done, and reports should never invent participants, measurements or citations.'
-  ],example:'A survey of volunteers from one campus may reveal interesting patterns, but its findings should not automatically be generalised to all students in a country.',practice:'Think of one factor that could bias a survey on your campus and suggest a mitigation.',quiz:[{q:'A positive relationship between two variables proves:',options:['One causes the other','A pattern that may need further investigation','Every individual follows the pattern'],correct:1,why:'Correlation alone does not establish causality.'},{q:'A transparent study should describe:',options:['Only its positive results','Its methods, evidence and limitations','Only findings that support its hypothesis'],correct:1,why:'Transparent reporting includes methods, uncertainty and limitations.'}]},
+  {
+    id:'rf5',title:'How to evaluate research quality',minutes:45,skill:'Critical appraisal',
+    objectives:[
+      'Use a consistent set of questions to critically appraise a research report.',
+      'Recognise selection, measurement and reporting bias and consider possible alternative explanations.',
+      'Distinguish reliability, validity, trustworthiness and generalisability in context.',
+      'Explain why sample size alone cannot establish a study’s quality.',
+      'Avoid interpreting correlation as causation without a suitable design.',
+      'Understand transparent methods, reproducibility and field-specific replication, without exposing confidential research data.'
+    ],
+    glossary:[
+      ['Critical appraisal','A reasoned assessment of whether a study’s question, design, evidence and conclusions fit together.'],
+      ['Selection bias','Systematic distortion when the people or observations included differ in important ways from those needed to answer the question.'],
+      ['Measurement bias','Systematic error caused by how variables, observations or responses are measured.'],
+      ['Reporting bias','Distortion from selectively reporting particular findings, analyses or outcomes.'],
+      ['Reliability','Consistency of a measure or procedure under appropriate conditions; it does not alone show that it measures the right thing.'],
+      ['Validity','How well a measure or inference supports the intended interpretation for its purpose and setting.'],
+      ['Credibility','In qualitative appraisal, a concern with whether the interpretation is well supported by participants’ accounts, context and documented analysis.'],
+      ['Confounding','When factors other than a proposed cause may explain an apparent association.'],
+      ['Generalisability','How far findings can reasonably apply beyond the people, situations or materials actually studied.'],
+      ['Reproducibility','The possibility of obtaining consistent results by following documented data and analysis procedures, where applicable.'],
+      ['Replication','Studying a question again with a new or independent dataset, procedure or sample as appropriate to the discipline.'],
+      ['Limitation','A boundary on what a research design, evidence or analysis can reliably conclude.']
+    ],
+    paragraphs:[
+      'A published study is not automatically high quality because it appears in a journal, uses complicated mathematics or reports a large number of participants. Critical appraisal means asking what the researchers tried to find out, how they obtained their evidence and whether their conclusions follow.',
+      'Different research designs have different strengths. A carefully conducted qualitative study may deeply explore experiences without trying to estimate a percentage for an entire population. A quantitative study may estimate a pattern but still have biased sampling or unmeasured confounding.',
+      'In this lesson we will assess imaginary examples involving AI and learning. The numbers and stories are teaching illustrations, not real research findings. Learn to ask better questions of a paper rather than treating any one checklist as a guarantee of truth.'
+    ],
+    teachingBlocks:[
+      {title:'1. Start with the research question and design',paragraphs:[
+        'First identify the authors’ exact question and whether their design is appropriate. If a paper asks how students experience AI assistance, interview analysis may fit. If it asks how many students use AI weekly, a well-defined quantitative sample and measurement plan may fit better.',
+        'Check what the comparison is, which variables or experiences were actually observed, and whether the procedure could answer the proposed question. A design can be useful for one question but not another.'
+      ]},
+      {title:'2. Examine sampling and whose voices are missing',paragraphs:[
+        'Sampling means choosing people, documents, places or observations relevant to the study. A convenience sample of one instructor’s willing students may differ from the broader university population.',
+        'A large but biased sample can give a misleading picture. Small samples may be entirely appropriate for some focused qualitative inquiries but may be inadequate for estimating a precise population percentage. Assess sample adequacy relative to the study’s purpose.',
+        'Ask who was eligible, who was recruited, who declined or was excluded and whose experiences might be missing. Not every study aims to be statistically representative; describe the claim’s intended scope honestly.'
+      ]},
+      {title:'3. Look for bias and alternative explanations',paragraphs:[
+        'Selection bias occurs when the included group differs systematically from the group of interest. Measurement bias may arise when a tool or question mismeasures the phenomenon. Reporting bias may occur when only favourable outcomes are highlighted.',
+        'For example, if an optional survey about AI use mainly attracts enthusiastic AI users, its responses may overstate enthusiasm. If a question asks “How helpful was our excellent AI tutor?”, the wording may push respondents toward approval.',
+        'A confounder is another factor that may explain an association. Students with higher previous grades or greater motivation might also choose to use AI more often. Simply comparing their test scores could wrongly attribute the difference to AI.'
+      ]},
+      {title:'4. Separate reliable measurements from valid conclusions',paragraphs:[
+        'Reliability asks whether a measure or procedure is consistent in suitable circumstances. Validity concerns whether it supports the intended interpretation. A survey could consistently measure student satisfaction while failing to measure actual learning gains.',
+        'With qualitative research, examine how interpretations were grounded in the material: documented analysis, attention to alternative perspectives, reflexivity and enough contextual detail for readers to evaluate the findings. Different fields use different criteria, so a single quantitative checklist should not be imposed mechanically.',
+        'When reading a result, ask “What exactly was measured?” and “Can that measure support the conclusion?” rather than accepting attractive percentages without checking definitions.'
+      ]},
+      {title:'5. Evaluate analysis and uncertainty',paragraphs:[
+        'In quantitative work, inspect numerical summaries, chosen comparisons, missing data, uncertainty and whether the reported calculations match the design. A statistically significant result does not necessarily mean a large or educationally important effect.',
+        'In qualitative work, inspect how codes, categories or themes were developed, whether examples support the interpretation and whether the researchers considered contradictory accounts. Counting quotes alone does not establish how prevalent an experience is.',
+        'Associations and before-after comparisons do not automatically establish cause and effect. Strong causal claims need designs, measurements and assumptions suitable for causal inference.'
+      ]},
+      {title:'6. Compare findings with limitations and reporting',paragraphs:[
+        'Check whether the discussion answers the original question or stretches beyond the collected evidence. A study of volunteers from one campus cannot automatically tell us what students everywhere experience.',
+        'Good reports describe methods, exclusions, unexpected findings, conflicts of interest, limits and relevant uncertainties. They do not quietly omit inconvenient results to make a preferred conclusion appear certain.',
+        'A limitation is not a reason to dismiss every finding. It helps readers know when and how to use the evidence responsibly.'
+      ]},
+      {title:'7. Transparency, reproducibility and replication',paragraphs:[
+        'Keep clear records of research questions, instruments, data-processing steps, analytic decisions, software versions and changes to the plan. Where appropriate and permitted, other researchers should be able to reproduce calculations or understand how an interpretation was reached.',
+        'Reproducibility and replication are related but not identical, and the exact definitions differ by discipline. Rerunning an analysis on the same data is different from obtaining new evidence in an independent study.',
+        'Transparency does not mean publishing identifiable interviews or private student records. Respect consent, legal requirements and institutional data policy while sharing appropriate procedures, metadata or non-sensitive materials.'
+      ]},
+      {title:'8. Make a balanced evidence judgement',paragraphs:[
+        'After appraising a study, write one sentence about what is reasonably supported, one about a limitation and one about how the finding could guide further research.',
+        'When several studies disagree, examine differences in their populations, methods, definitions and contexts before choosing a favourite. A systematic review may help but must itself be critically appraised.',
+        'Use language that matches the strength of evidence: “participants reported,” “the sample showed,” “was associated with” or “the study estimates” when those terms are warranted. Do not write “proves” without appropriate justification.'
+      ]}
+    ],
+    example:'Imagine a survey of 40 volunteers from one class reporting that frequent AI users feel more confident in their understanding. Critically examine who volunteered, how confidence was measured, whether knowledge was assessed, which alternative explanations exist and how far any conclusion can reach.',
+    workedExample:{
+      title:'Worked appraisal: an imaginary AI study',
+      steps:[
+        ['Question','The hypothetical study asks whether weekly AI use is associated with student confidence. It does not directly test learning gains.'],
+        ['Sampling','Forty volunteers from one course completed a survey. Volunteers may differ from absent or unwilling classmates.'],
+        ['Measurement','Participants rated their own confidence on a questionnaire. Confidence is not the same as an independently assessed learning outcome.'],
+        ['Analysis','The report finds a positive association between AI-use frequency and self-reported confidence. The classroom example includes no verified study results.'],
+        ['Alternatives','Previous ability, study time or enthusiasm for technology may also influence the pattern. A correlational survey cannot by itself rule them out.'],
+        ['Reporting','A careful conclusion is: “In this illustrative volunteer sample, higher reported AI use was associated with higher reported confidence.” Do not claim AI caused improved grades.'],
+        ['Next step','Future work could improve sampling, define outcomes more clearly and choose a suitable design while meeting ethics requirements.']
+      ],
+      takeaway:'Good appraisal checks question, design, sampling, measurement, analysis and claims as a connected chain rather than counting only citations or sample size.'
+    },
+    comparisons:[
+      ['Large sample','“The sample is huge, so the conclusions must apply to everyone.”','Ask how people were selected, which population was targeted and whether systematic bias remains.'],
+      ['Consistent measurement','“The survey reliably measures satisfaction, so it also proves learning improved.”','Check whether the measure validly represents the conclusion being made.'],
+      ['Correlation and cause','“AI users score higher, therefore AI caused the increase.”','Consider confounding and whether the study design supports causal inference.'],
+      ['Transparency','“To be open, publish every raw interview file.”','Document analyses and share only information permitted by consent, law and data-protection policies.']
+    ],
+    practice:'Evaluate an imaginary or published study with a structured checklist: design, sampling, measurement, limitations and a careful conclusion. If using a published study, do not invent any details you cannot verify.',
+    practicePrompts:[
+      'Design: What was the study trying to answer, and how?',
+      'Sample: Who or what was studied, and who might be missing?',
+      'Bias: Which measurements or circumstances could distort the findings?',
+      'Conclusion: What can honestly be said, and what is still uncertain?'
+    ],
+    reflectionPrompt:'Explain why “large sample,” “peer reviewed” or “statistically significant” alone cannot guarantee that a paper’s conclusion is true. Which appraisal question would you ask first?',
+    quiz:[
+      {q:'A survey of 2,000 students recruited from one AI-enthusiast group reports very positive attitudes. What is a concern?',options:['The sample is large, so selection cannot matter','Recruitment may bias the results even with many respondents','The study automatically establishes cause and effect'],correct:1,why:'A large sample can still suffer from selection bias if it systematically excludes or underrepresents relevant people.'},
+      {q:'A questionnaire consistently asks whether students like an AI tutor. Can it automatically prove the tutor improved test performance?',options:['No: reliable satisfaction responses may not validly measure actual learning','Yes: consistency guarantees validity for every outcome','Yes: any questionnaire is a controlled experiment'],correct:0,why:'Reliability and validity are different. Satisfaction is not necessarily the outcome called learning performance.'},
+      {q:'Frequent AI users get higher grades in an observational study. What is a careful interpretation?',options:['AI definitely caused the higher grades','No further evidence can help understand the result','An association was observed, but confounding and study design limit causal claims'],correct:2,why:'Confounding and other explanations may affect observational associations; causal inference requires suitable assumptions and design.'},
+      {q:'What should you look for when appraising a qualitative interview study?',options:['Only the number of participants compared with national population size','Whether interpretations are grounded in accounts, analysis is transparent and context is explained','A numerical p-value for every quoted comment'],correct:1,why:'Qualitative quality depends on credible interpretation, transparency, context and methodological fit rather than a universal numeric threshold.'},
+      {q:'Which is an example of reporting bias?',options:['Publishing only favourable outcomes while hiding prespecified unfavourable ones','Describing all planned analyses including unexpected results','Explaining study limitations openly'],correct:0,why:'Selective reporting can create a misleading picture of the evidence.'},
+      {q:'A result has a very small p-value but the measured difference is tiny. What should the researcher consider?',options:['It must be educationally transformative','The practical importance, uncertainty, design and context, not just statistical significance','The null hypothesis is mathematically impossible in all situations'],correct:1,why:'Statistical significance alone does not show a large or important effect; evaluate magnitude and uncertainty.'},
+      {q:'Which statement best distinguishes analysis reproducibility and replication?',options:['They are identical in all disciplines','Reproducibility always requires sharing private participant identities','Reproducing results from documented procedures or existing data differs from independently gathering new evidence to replicate findings'],correct:2,why:'Reproducibility and replication are related but different concepts and their exact terminology can vary by discipline.'},
+      {q:'What is an appropriate concluding statement after a limited one-campus volunteer survey?',options:['The surveyed participants reported a pattern, with limits on generalising beyond that group','The pattern must apply to every university and every year','Every participant’s feelings prove an AI intervention caused academic improvement'],correct:0,why:'A sound conclusion describes the actual evidence and acknowledges sampling, measurement and interpretation limits.'}
+    ]
+  },
   {id:'rf6',title:'From learning to a first project',minutes:16,skill:'Research planning',glossary:[['Feasibility','Whether a study is practical given time, access, resources and ethics.'],['Research objective','A concrete goal a study aims to achieve.'],['Research design','The overall plan connecting questions, evidence and analysis.']],objectives:['Describe the stages of a research project.','Draft a focused, feasible starting question.'],paragraphs:[
     'A useful starting workflow is: identify a problem, review existing knowledge, refine questions, choose methods, review ethical requirements, gather data, analyse it and communicate findings. The process is iterative; evidence may cause you to revise an earlier decision.',
     'Start small. Choose an interesting question that is answerable with resources and access you actually have. Record uncertainties honestly and ask a supervisor or ethics office when the situation requires specialist approval.'
