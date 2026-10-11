@@ -189,10 +189,107 @@ export const lessons=[
       {q:'Which statement about surveys and interviews is most accurate?',options:['Every survey is quantitative and every interview is qualitative','Open-text survey answers can be analysed qualitatively, while numeric interview responses may be summarised quantitatively','One interview always represents the entire population'],correct:1,why:'Approach depends on the research question, evidence and analysis—not just whether the instrument is called a survey or interview.'}
     ]
   },
-  {id:'rf3',title:'Questions, evidence and sources',minutes:12,skill:'Evaluating evidence',glossary:[['Primary source','Original records or material relevant to the inquiry.'],['Secondary source','A source interpreting or analysing existing material.'],['Peer review','A process in which specialists evaluate a manuscript before publication.']],objectives:['Evaluate whether a claim is supported.','Distinguish common source types.'],paragraphs:[
-    'A claim is not reliable merely because it sounds convincing. Ask who produced the information, when, how the evidence was collected and whether alternative explanations are possible. A scholarly paper may be relevant without being high quality.',
-    'Primary and secondary sources serve different purposes. An original interview transcript is primary material for that interview study; a review discussing many studies is secondary analysis. Peer review can help quality control but is not a guarantee of correctness.'
-  ],example:'“Every student prefers online learning” is a sweeping claim. A trustworthy analysis would identify which students were studied, how preferences were measured and which uncertainties remain.',practice:'Pick a news or academic claim. Identify the source, sample, measurement and possible limitation.',quiz:[{q:'Which is the best way to evaluate a claim?',options:['Use it if it confirms my belief','Check its source, methods and supporting evidence','Assume peer-reviewed means error-free'],correct:1,why:'Evidence quality requires evaluating the origin, methods, scope and uncertainty.'},{q:'A systematic review is typically:',options:['A direct measurement from a new experiment','A structured synthesis of previous studies','Proof that all included studies are flawless'],correct:1,why:'A review synthesises existing research using defined methods.'}]},
+  {
+    id:'rf3',title:'Questions, evidence and sources',minutes:45,skill:'Evaluating evidence',
+    objectives:[
+      'Turn a broad curiosity into a focused, answerable research question.',
+      'Tell apart a claim, the evidence offered for it and what the evidence actually supports.',
+      'Distinguish primary and secondary sources in relation to a particular research question.',
+      'Use a repeatable checklist to assess relevance, credibility, methods, bias and uncertainty.',
+      'Explain why peer review, high citation counts and AI-generated references do not guarantee reliability.',
+      'Record enough information to trace a source while avoiding fabricated or unverified citations.'
+    ],
+    glossary:[
+      ['Research question','A focused question that determines the evidence needed and the scope of an investigation.'],
+      ['Claim','A statement that something is true; a research claim needs appropriately matched evidence.'],
+      ['Evidence','Information that can support, contradict or qualify a claim when gathered and assessed appropriately.'],
+      ['Primary source','Original evidence in relation to the question, such as a study reporting its own data or the original document being examined.'],
+      ['Secondary source','A work that interprets, reviews or synthesises other sources. Its status depends on what you are investigating.'],
+      ['Peer review','Evaluation by experts, often before publication; a quality-control step, not proof that findings are correct.'],
+      ['Systematic review','A structured synthesis that uses explicit methods for searching, selecting and evaluating existing studies.'],
+      ['Bias','A systematic influence that may distort data collection, interpretation or reported results.'],
+      ['Confounding','When other factors help explain an apparent relationship, limiting a simple causal claim.'],
+      ['Provenance','Information about where a source or dataset originated and how it can be traced.'],
+      ['Retraction','A published notice that a paper should not be relied on as a valid research report; check its reason and context.']
+    ],
+    paragraphs:[
+      'Research does not begin by collecting anything that mentions your topic. Begin with a clear question, then decide which kinds of evidence could answer it. A relevant source is not necessarily a reliable source, and a reliable study may not answer your exact question.',
+      'When you read a statement such as “AI improves student learning,” ask: Which AI tool, which learners, which outcome, compared with what, over how long, and according to which evidence? These questions help transform a persuasive slogan into something you can investigate.',
+      'This lesson teaches you to examine claims carefully, tell primary from secondary evidence, locate traceable sources and make fair conclusions. It uses illustrative teaching cases only: no invented examples should be treated as findings from a real study.'
+    ],
+    teachingBlocks:[
+      {title:'1. Write an answerable question',paragraphs:[
+        'Start with your curiosity: “Does AI make learning better?” That is too broad because different people, tools and learning outcomes are involved. Narrow it to a group and an outcome: “Among first-year students at a specified university, how is AI use related to performance on a defined learning assessment during one term?”',
+        'For a qualitative project you might instead ask: “How do first-year students describe situations where an AI explanation helped or confused them?” Either can be suitable, but each needs different evidence. Question frameworks such as PICO can help for certain intervention questions; they are not compulsory for every field.'
+      ]},
+      {title:'2. Separate a claim from evidence and inference',paragraphs:[
+        'A claim is what someone says is true. Evidence is the information presented to support or challenge it. An inference is the conclusion someone draws from that information. Ask whether the inference stays within what the evidence can justify.',
+        'Imagine an invented classroom exercise in which 20 volunteers say AI makes revision easier. That might support a narrow statement about those volunteers’ reported experiences. It would not prove AI increased their examination results or benefited every student.',
+        'Keep three labels in mind: what a source directly reports, what you infer from it, and what remains unknown. The app should never treat its own suggestions as independently verified facts.'
+      ]},
+      {title:'3. Primary and secondary sources are relative to the question',paragraphs:[
+        'A journal article reporting researchers’ own interviews or measurements can be a primary source for a study of those findings. A systematic review combining many such studies is usually secondary evidence for the same question.',
+        'However, if your research question investigates what reviews said about AI between certain years, the review papers themselves may be your primary research material. An original photograph, policy text, dataset or archived letter can also be primary material in the relevant inquiry.',
+        'Neither “primary” nor “secondary” means automatically better. A well-conducted review may offer stronger overall evidence for some questions than a single small study, and a primary study may provide details a review cannot.'
+      ]},
+      {title:'4. Search and verify the actual source',paragraphs:[
+        'Build a small list of useful search terms and synonyms before searching research catalogues, academic databases and open-access repositories. For example: “generative AI”, “student learning”, “university”, “assessment”, and related alternative terms.',
+        'When you encounter a promising record, inspect the title, authors, year, publisher or journal, abstract, and—where available—the full text and DOI. Check whether the DOI resolves to the same work and whether the paper has a correction, expression of concern or retraction.',
+        'Do not cite a paper solely because an AI assistant mentions it. AI can produce inaccurate or nonexistent titles, authors and identifiers. Research Hub AI does not automatically verify a citation in this offline lesson; you must inspect the actual source.'
+      ]},
+      {title:'5. Judge evidence quality with a practical checklist',paragraphs:[
+        'Ask: Relevance—does the study examine my question? Origin—who produced it and can I trace it? Methods—who or what was studied and how? Analysis—do the results follow from the procedures? Bias—what may be missing, selected or influenced? Limits—can I generalise, and is cause and effect justified?',
+        'For instance, a voluntary survey of 30 students might be informative about their opinions, but the respondents may not represent the university. A study can be peer reviewed and still have weak measurements or selection problems.',
+        'Compare evidence from multiple independent sources when possible. Agreement helps, but repeated claims from copied articles are not independent confirmation.'
+      ]},
+      {title:'6. Read the numbers and language carefully',paragraphs:[
+        'Notice the difference between “reported satisfaction,” “test score,” “difference,” “association” and “cause.” A change in confidence is not the same as a measured improvement in knowledge. Correlation alone cannot establish causation.',
+        'Look for sample sizes, definitions of measures, uncertainty, comparison groups and what was not measured. Strong evidence for one group or setting may not apply to every learner or institution.',
+        'Avoid dramatic absolute statements such as “always,” “never” and “proves” unless the evidence truly warrants them.'
+      ]},
+      {title:'7. Keep a traceable evidence record',paragraphs:[
+        'Make a research note with the exact source title, author(s), date, identifier or link, the question it addresses, what the source actually found, how it was studied and its limitations. Add your own interpretation separately.',
+        'A reference may be saved as unverified until you have inspected it. A citation manager can organise records, but even a formatted bibliography is only as trustworthy as the underlying sources.',
+        'If using Research Hub AI’s manual Research Library, mark or describe uncertainty honestly. It does not access paywalled sources, verify references automatically, or replace institution-approved research data systems.'
+      ]}
+    ],
+    example:'An online post claims “AI makes every student learn faster.” Before accepting it, ask who studied which students, what was measured, what the comparison was and whether the original source can be found. An opinion post is not sufficient evidence for a universal learning claim.',
+    workedExample:{
+      title:'Worked example: checking an AI-learning claim',
+      steps:[
+        ['Start with the claim','An imaginary blog post says: “AI doubles students’ understanding.” This is a fictional teaching claim, not a real published finding.'],
+        ['Refine the question','What outcome counts as understanding, which group is being studied and what comparison is relevant?'],
+        ['Trace the evidence','Look for an actual study: original author, date, journal or repository, full text and any credible identifier. If none is available, do not present the claim as verified.'],
+        ['Read the methods','Check how participants were selected, what tasks were completed, how understanding was measured, and whether a suitable comparison was used.'],
+        ['Evaluate the inference','Even a measured difference may have alternative explanations; a self-report about helpfulness is not the same as increased knowledge.'],
+        ['Record responsibly','Write what the source directly reports, a possible interpretation, and at least one limitation. Never invent a citation or measurement.']
+      ],
+      takeaway:'Trace the original work, match the evidence to the exact claim and keep uncertain conclusions clearly labelled.'
+    },
+    comparisons:[
+      ['Search-result summary','Copy the first summary or an AI-provided citation without opening the underlying source.','Find the original work, check bibliographic details, read its methods and verify that it says what the summary claims.'],
+      ['Peer-review badge','Assume a peer-reviewed paper must be correct.','Treat peer review as one safeguard; still examine sampling, analysis, limitations, corrections and retractions.'],
+      ['Primary versus secondary','Assume that primary always means best or that a review contains new participant measurements.','Ask what the question is, what the source directly provides and how transparently the evidence was gathered or synthesised.'],
+      ['Strong conclusion','Say “AI causes higher grades” because two measures were associated.','State the observed relationship and consider other factors unless an appropriate causal design supports stronger claims.']
+    ],
+    practice:'Choose one claim about your research topic. Refine it to a focused question, trace where its supporting evidence might come from, and explain what the evidence would not establish. Use the four guided steps below.',
+    practicePrompts:[
+      'Question: Which learners, action or outcome will you investigate?',
+      'Claim: What exactly is being asserted about your topic?',
+      'Source: How will you check who produced the source and whether it supports that claim?',
+      'Limit: What cannot reasonably be concluded from the available evidence?'
+    ],
+    reflectionPrompt:'Explain how you would decide whether an online claim about AI and learning is trustworthy. What is the difference between primary and secondary evidence for your particular question? What is still unclear?',
+    quiz:[
+      {q:'A website says “AI improves every student’s grades.” What should you do first?',options:['Repeat the statement because it sounds convincing','Check the original evidence, group, measurement and comparison','Reject all studies involving AI without reading them'],correct:1,why:'Start by tracing the original source, methods and scope. A broad claim needs appropriately matched evidence.'},
+      {q:'Researchers publish an article reporting their own interviews with students. For an inquiry into those students’ experiences, that article is usually:',options:['Primary research evidence','A systematic review of dozens of other studies','Proof that all students share those experiences'],correct:0,why:'Original data reporting is commonly primary evidence for the question being studied; the results still have limits.'},
+      {q:'What is a systematic review generally designed to do?',options:['Replace all original studies with opinions','Guarantee that every included result is accurate','Find, critically appraise and synthesise relevant previous studies using explicit methods'],correct:2,why:'A systematic review is a structured synthesis. Its trustworthiness depends on its methods and the quality of included evidence.'},
+      {q:'A peer-reviewed study has a sample of 18 volunteers from one course. Which statement is most careful?',options:['Peer review proves the findings apply to every university','Peer review is useful but the sampling and other limitations still matter','The study must be fraudulent because the sample is small'],correct:1,why:'Peer review does not guarantee accuracy or generalisability. Evaluate sampling, analysis, uncertainty and the research purpose.'},
+      {q:'An AI assistant supplies a promising paper title and DOI. What should you do before citing it?',options:['Verify the actual paper and DOI, examine its claims and check for corrections or retractions','Copy the citation because its formatting looks academic','Create the missing paper if the DOI does not resolve'],correct:0,why:'A plausible-looking citation is not verification. Confirm the original publication and accurately represent what it reports.'},
+      {q:'A survey finds that students who use AI more often report greater confidence. What can it show by itself?',options:['AI definitely caused measurable learning improvements','Every AI user will perform better on exams','A relationship in the surveyed responses, not by itself proof of learning gains or cause'],correct:2,why:'Self-reported confidence is not necessarily actual learning. Association does not, on its own, establish causation.'},
+      {q:'Which research note is most useful for future verification?',options:['“The source is good because many people shared it.”','Full source details, relevant findings, methods, limitations and a clearly labelled personal interpretation','Only a title with no way to locate or check the source'],correct:1,why:'Traceable bibliographic details, a precise evidence summary and separate inference make claims easier to verify.'}
+    ]
+  },
   {id:'rf4',title:'Ethics and responsible research',minutes:15,skill:'Research ethics awareness',glossary:[['Informed consent','Voluntary agreement based on sufficient information.'],['Confidentiality','Appropriate protection of information from unauthorised disclosure.'],['Conflict of interest','A circumstance that might compromise or appear to compromise impartiality.']],objectives:['Recognise basic ethics responsibilities.','Identify when institutional guidance may be required.'],paragraphs:[
     'Research involving people may require ethics approval before recruitment or data collection. Researchers should consider consent, potential harm, fairness, confidentiality, data protection and participants’ right to withdraw where applicable.',
     'This educational app cannot issue ethics approval. Do not put identifiable participant records, sensitive interviews or protected health information into this early local prototype. University or organisational requirements take priority.'
