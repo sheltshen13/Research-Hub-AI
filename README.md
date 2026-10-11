@@ -1,8 +1,23 @@
-# Research Hub AI — Web-ready prototype (v0.1.5)
+# Research Hub AI — Complete Foundation course prototype (v0.2.0)
 
 **Free. Offline-first. Private by default. No paid APIs or mandatory accounts.**
 
 This is a working prototype of the Research Hub AI master blueprint. It is deliberately built with **HTML, CSS, and native JavaScript with zero npm dependencies** so its first release can be developed, tested and used directly on an Android phone. React/TypeScript may be introduced in a future migration after the first workflows are proven. The core app has no server backend and does not send project data anywhere.
+
+## Foundation course complete — v0.2.0
+
+The free, offline-capable **Research Fundamentals** subject now provides all six complete lessons:
+
+1. What counts as research?
+2. Research types and approaches
+3. Questions, evidence and sources
+4. Ethics and responsible research
+5. How to evaluate research quality
+6. From learning to a first project
+
+Every lesson has substantial explanations, terminology, a worked example, guided writing steps, a formative knowledge check and private reflection. Learning records and guided answers remain local to the user's browser and may be exported in the existing ZIP backup format. **Quiz passes are not academic accreditation or proof of practical research competence.** The other 11 Academy subjects are currently planned, not yet full courses.
+
+Learning does not require a subscription, a paid service, a login, or a generative AI model. Research Hub AI remains a prototype and does not issue ethics approval or verify bibliographic sources automatically.
 
 ## What works
 
