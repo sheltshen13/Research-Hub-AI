@@ -118,6 +118,64 @@ export const methodsGuidedSteps = [
   }
 ];
 
+
+// Lesson 3: building a question and evaluating evidence. These are teaching
+// exercises; they do not search external databases or verify references.
+export const evidenceGuidedSteps = [
+  {
+    key:'evidence_question',title:'Focus the research question',
+    simple:'Start with a focused question. Identify who or what you are studying and the outcome or experience you want to understand.',
+    example:'How do first-year students at one university describe using AI explanations while learning difficult topics?',
+    prompt:'Write one research question about AI and learning. Who or what will you study, and what will you investigate?',
+    hint:'Avoid “Does AI help everyone?” Name a specific group and aspect of learning. You can refine this question later.',
+    check:{
+      question:'Which question is easiest to investigate responsibly with a clear scope?',
+      options:['Is all technology helpful?', 'How do first-year students in one program describe using AI to understand coursework?', 'Does AI always make people smarter?'],
+      correct:1,
+      explanation:'A focused question identifies a relevant group, phenomenon and setting. It does not assume the outcome.'
+    }
+  },
+  {
+    key:'evidence_claim',title:'Identify a claim and the evidence needed',
+    simple:'A claim states something asserted to be true; evidence is information that could support or challenge it. Keep claims separate from what a study actually demonstrates.',
+    example:'Claim: “AI improves learning.” You would first need to define “improves,” then look for evidence of learning outcomes rather than only opinions.',
+    prompt:'Write one claim someone might make about your topic. Then explain what observation, measurement or document could test it.',
+    hint:'For instance, self-reported satisfaction alone does not demonstrate increased learning scores.',
+    check:{
+      question:'Students say an AI tool feels helpful. What does that observation directly show?',
+      options:['The surveyed students reported finding it helpful', 'The tool definitely increased every student’s grades', 'AI caused faster learning for all students'],
+      correct:0,
+      explanation:'Their reports can support a claim about perceived usefulness, not necessarily measured gains or causality.'
+    }
+  },
+  {
+    key:'evidence_source',title:'Check a source before trusting it',
+    simple:'A traceable source has identifiable origin and methods. Verify a paper’s actual title, authors, date, DOI or URL; examine how findings were produced and whether there are corrections.',
+    example:'An AI assistant suggests a study title. Before using it, locate the actual publication and compare its findings with the AI summary. If you cannot confirm it, label it unverified.',
+    prompt:'Describe how you would verify an academic source and decide whether it is relevant and credible. Do not invent a reference.',
+    hint:'Look for the original paper, methods, sample and limitations. Peer review is a useful signal, not a guarantee.',
+    check:{
+      question:'An AI-generated citation looks real but you cannot locate the original. What is the responsible action?',
+      options:['Cite it anyway because it has a DOI-like string', 'Label it unverified and do not cite it as a real publication', 'Invent missing authors and publication details'],
+      correct:1,
+      explanation:'A plausible citation is not proof a study exists. Do not treat unverified bibliographic details as fact.'
+    }
+  },
+  {
+    key:'evidence_limit',title:'Record the conclusion and its limits',
+    simple:'Separate what the evidence directly reports, your interpretation and what remains uncertain. Small or unrepresentative samples and nonexperimental designs may limit conclusions.',
+    example:'A voluntary survey finds students who use AI report greater confidence. It does not, by itself, establish that AI caused better learning outcomes.',
+    prompt:'Give a cautious conclusion for your proposed evidence, then name one weakness or alternative explanation.',
+    hint:'Try: “This evidence could suggest…, but it does not prove… because…”',
+    check:{
+      question:'A small survey finds AI users report higher confidence. Which conclusion best respects the evidence?',
+      options:['The survey proves AI causes higher grades', 'AI users everywhere are more intelligent', 'These respondents reported higher confidence; learning and causation need further evidence'],
+      correct:2,
+      explanation:'Confidence is self-reported and may not reflect measured understanding. Other factors may explain observed associations.'
+    }
+  }
+];
+
 export const guidedLessons = {
   rf1: {
     title:'Guided practice: four ideas, one at a time',
@@ -130,5 +188,11 @@ export const guidedLessons = {
     intro:'Compare qualitative, quantitative and mixed methods on the same AI-and-learning topic, then justify a choice. Take one step at a time and save your own examples.',
     recapTitle:'Your research approach comparison',
     steps:methodsGuidedSteps
+  },
+  rf3: {
+    title:'Guided practice: question, claim, source and conclusion',
+    intro:'Examine one research topic in four stages. Refine the question, identify the claim, check possible evidence and write a cautious conclusion. Your notes save locally.',
+    recapTitle:'Your evidence-checking notes',
+    steps:evidenceGuidedSteps
   }
 };
